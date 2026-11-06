@@ -109,26 +109,39 @@ def parse_deal_meta(title: str):
     price_str = ""
     price_num = None
 
-    # 만원 단위(예: 12.5만원, 3만원) 및 일반 원 단위(예: 18,900원, 3500원) 정밀 인식
-    m_man = re.search(r"(\d+(?:\.\d+)?)\s*만\s*원?", title)
-    m_won = re.search(r"(\d{1,3}(?:,\d{3})+|\d{4,8})\s*원", title)
-
-    if m_man:
-        raw_val = float(m_man.group(1)) * 10000
-        if 5000 <= raw_val <= 50000000:
-            price_num = int(raw_val)
-            price_str = f"{price_num:,}원"
-    elif m_won:
-        raw_num = int(m_won.group(1).replace(",", ""))
+    # 1. 괄호 안의 실구매가 우선 탐색: (16,600원/무료), (49,000원/3,000원)
+    m_paren = re.search(r"\((?:[^\)]*?)(\d{1,3}(?:,\d{3})+|\d{4,8})\s*원", title)
+    if m_paren:
+        raw_num = int(m_paren.group(1).replace(",", ""))
         if 100 <= raw_num <= 50000000:
             price_num = raw_num
-            price_str = f"{raw_num:,}원"
-    else:
-        m_usd = re.search(r"(?:\$\s*(\d+(?:\.\d{1,2})?)|(\d+(?:\.\d{1,2})?)\s*(?:달러|불))", title)
+            price_str = f"{price_num:,}원"
+
+    # 2. 괄호 안에 달러 가격이 있는 경우: ($13.33/무료)
+    if not price_str:
+        m_usd = re.search(r"\$\s*(\d+(?:\.\d{1,2})?)", title)
         if m_usd:
-            val = m_usd.group(1) or m_usd.group(2)
+            val = m_usd.group(1)
             price_str = f"${val}"
             price_num = int(float(val) * 1400)
+
+    # 3. 괄호 외 본문에서 일반 원 탐색 (상품권 '2만원권', '30,000원 이상' 등 제외)
+    if not price_str:
+        m_won = re.search(r"(\d{1,3}(?:,\d{3})+|\d{4,8})\s*원(?!\s*(?:권|이상))", title)
+        if m_won:
+            raw_num = int(m_won.group(1).replace(",", ""))
+            if 100 <= raw_num <= 50000000:
+                price_num = raw_num
+                price_str = f"{price_num:,}원"
+
+    # 4. 만원 단위 탐색: 예) 12.5만원, 3만원 (단, '2만원권' 등 액면권 제외)
+    if not price_str:
+        m_man = re.search(r"(\d+(?:\.\d+)?)\s*만\s*원?(?!\s*(?:권|이상))", title)
+        if m_man:
+            raw_val = float(m_man.group(1)) * 10000
+            if 5000 <= raw_val <= 50000000:
+                price_num = int(raw_val)
+                price_str = f"{price_num:,}원"
 
     return price_str, price_num, free_ship
 
@@ -136,22 +149,29 @@ def clean_title(text: str) -> str:
     text = html_lib.unescape(text)
     text = text.replace("*", "").replace('"', '').replace("'", "")
     text = re.sub(r"\s+", " ", text).strip()
-    # 앞쪽 순위 번호 제거 (예: "1 표류도시", "10 듀얼소닉")
+    
+    # 1. 앞쪽 날짜/시간 (아카라이브 '11-06 05:54' 등) 제거
+    text = re.sub(r"^\d{2}[-./]\d{2}\s+\d{2}:\d{2}\s*", "", text)
+    # 2. 앞쪽 순위 번호 (이토랜드 '1 표류도시', '10 듀얼소닉' 등) 제거
     text = re.sub(r"^\d{1,2}\s+", "", text)
-    # 뒤쪽 댓글 수/말머리 제거 (예: "(45)", "[12]", "댓글 5개")
+    # 3. 뒤쪽 댓글 수/말머리 제거 (예: "(45)", "[12]", "댓글 5개")
     text = re.sub(r"\s*\(\d+\)$", "", text)
     text = re.sub(r"\s*\[\d+\]$", "", text)
     text = re.sub(r"\s*댓글\s*\d+개*$", "", text)
     text = re.sub(r"\s+20\d{2}\.\d{2}\.\d{2}.*$", "", text)
     text = re.sub(r"\s*\(\d+,\d+L\d+\)\s*$", "", text)
+    # 4. 뒤쪽 고립된 댓글 숫자 (클리앙 '면도기 4', '리딤 17' 등) 제거
+    text = re.sub(r"\s+\d{1,3}$", "", text)
+    
     return text.strip()
 
 def is_expired_or_notice(title: str) -> bool:
     t = title.lower()
     return any(k in t for k in [
-        "종료", "품절", "판매종료", "모바일 앱 이용 안내", "게시판 이용안내",
-        "이용안내", "공지사항", "이용규칙", "가이드라인"
-    ])
+        "종료", "품절", "판매종료", "이용 안내", "이용안내", "이용 규정", "이용규칙",
+        "공지사항", "공지", "가이드라인", "게시판 이용", "인기글 이벤트", "포인트 이벤트",
+        "공유 이벤트", "설문조사", "당첨자", "출석체크"
+    ]) or title.startswith("❤️")
 
 def build_item(title: str, url: str, source: str, raw_time: str, prev_map: dict, now_ts: int):
     price_str, price_num, free_ship = parse_deal_meta(title)
@@ -216,7 +236,10 @@ def fetch_clien(prev_map, now_ts):
         html = get_html("https://m.clien.net/service/board/jirum")
         soup = BeautifulSoup(html, "html.parser")
         for idx, row in enumerate(soup.select("a.list_item[data-role='list-row']")):
-            title_el = row.select_one(".list_subject, [data-role='list-title-text']")
+            # 댓글 수 요소(.list_reply)를 통째로 삭제하여 제목 끝 숫자 찌꺼기 완벽 제거
+            for rep in row.select(".list_reply"):
+                rep.decompose()
+            title_el = row.select_one("[data-role='list-title-text']") or row.select_one(".list_subject")
             if not title_el:
                 continue
             title = clean_title(title_el.get_text())
@@ -270,6 +293,7 @@ def fetch_eomisae(prev_map, now_ts):
             if not re.search(r"/fs/\d+$", href):
                 continue
             title = clean_title(a.get_text())
+            # 운영자 공지 및 포인트/인기글 이벤트 필터링
             if len(title) < 4 or is_expired_or_notice(title):
                 continue
             link = href if href.startswith("http") else f"https://eomisae.co.kr{href}"
@@ -287,10 +311,9 @@ def fetch_etoland(prev_map, now_ts):
     items = []
     try:
         md = get_markdown_via_jina("https://etoland.co.kr/b/hotdeal/list")
-        matches = re.findall(r"\[([^\]]+)\]\((https?://(?:www\.)?etoland\.co\.kr/[^\)]+)\)", md)
+        # 핫딜 게시판 경로(/b/hotdeal/view/)만 엄격하게 매칭하여 사이드바 유머글 유입 원천 차단
+        matches = re.findall(r"\[([^\]]+)\]\((https?://(?:www\.)?etoland\.co\.kr/b/hotdeal/view/[^\)]+)\)", md)
         for idx, (raw_title, link) in enumerate(matches):
-            if "/list" in link or not re.search(r"\d+", link):
-                continue
             clean_link = link.split("#")[0].split("?")[0]
             title = clean_title(raw_title)
             if re.fullmatch(r"\(?\d+\)?", title):
@@ -360,16 +383,39 @@ def interleave_lists(lists):
 def extract_hot_keywords(items):
     stopwords = {
         "무료", "무배", "배송", "다양", "할인", "특가", "최대", "카드",
-        "적립", "쿠폰", "만원", "천원", "핫딜", "예약", "가격", "인하", "판매", "전용"
+        "적립", "쿠폰", "만원", "천원", "핫딜", "예약", "가격", "인하", "판매", "전용",
+        "일시", "번가", "추천", "공유", "이벤트", "안내", "게시판", "인기", "오늘", "내일",
+        "마감", "모음", "정리", "리딤", "세일", "출시", "구매", "증정", "추가", "포함",
+        "국내", "해외", "직구", "공식", "단독", "행사"
     }
+    unit_stopwords = {
+        "jpg", "png", "mp4", "gif", "jpeg", "gb", "mb", "tb", "mah",
+        "khz", "mhz", "ghz", "fps", "w", "hz", "cm", "mm", "inch", "pro", "max", "plus"
+    }
+
     words = []
     for item in items:
-        cleaned = re.sub(r"\b\d+([,.]\d+)*\s*(원|개|입|팩|세트|box|박스|kg|g|ml|l|p|장)?\b", " ", item["title"], flags=re.I)
+        title = item["title"]
+        # 'G마켓'을 '지마켓'으로 통일하여 중복 태그 방지
+        title = re.sub(r"\bG마켓\b", "지마켓", title, flags=re.I)
+        
+        # '11번가'가 '11'과 '번가'로 쪼개지지 않도록 사전 보호
+        has_11st = "11번가" in title
+        
+        cleaned = re.sub(r"11번가", " ", title)
+        cleaned = re.sub(r"\b\d+([,.]\d+)*\s*(원|개|입|팩|세트|box|박스|kg|g|ml|l|p|장)?\b", " ", cleaned, flags=re.I)
+        cleaned = re.sub(r"\b[a-zA-Z0-9_]+\.(jpg|png|mp4|gif)\b", " ", cleaned, flags=re.I)
+
         tokens = re.findall(r"[가-힣a-zA-Z]{2,8}", cleaned)
         for t in tokens:
-            if t not in stopwords and not t.endswith("원") and not t.endswith("개"):
+            low = t.lower()
+            if low not in stopwords and low not in unit_stopwords and not low.endswith("원") and not low.endswith("개"):
                 words.append(t)
-    return [w for w, _ in Counter(words).most_common(10)] or ["쿠팡", "알리", "네이버", "지마켓", "스팀"]
+        
+        if has_11st:
+            words.append("11번가")
+
+    return [w for w, _ in Counter(words).most_common(10)] or ["쿠팡", "알리", "네이버", "지마켓", "11번가"]
 
 def main():
     now_ts = int(datetime.now(KST).timestamp())
@@ -394,7 +440,7 @@ def main():
             seen.add(deal["url"])
             unique_deals.append(deal)
 
-    # 최신 등록시간순(timestamp 내림차순)으로 최종 정렬
+    # 최신 등록시간순(timestamp 내림차순) 정렬
     unique_deals.sort(key=lambda x: x.get("timestamp", 0), reverse=True)
 
     now_str = datetime.now(KST).strftime("%Y-%m-%d %H:%M")
