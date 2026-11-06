@@ -59,7 +59,6 @@
       padding: 14px 14px 50px;
     }
 
-    /* 상단 헤더 */
     header {
       display: flex;
       flex-wrap: wrap;
@@ -96,9 +95,7 @@
       justify-content: flex-end;
     }
 
-    .search-box {
-      width: 210px;
-    }
+    .search-box { width: 210px; }
 
     .search-box input {
       width: 100%;
@@ -111,9 +108,7 @@
       outline: none;
     }
 
-    .search-box input:focus {
-      border-color: var(--text-main);
-    }
+    .search-box input:focus { border-color: var(--text-main); }
 
     .btn-ctrl {
       background: var(--bg-panel);
@@ -128,9 +123,7 @@
       transition: all 0.12s;
     }
 
-    .btn-ctrl:hover {
-      background: var(--bg-hover);
-    }
+    .btn-ctrl:hover { background: var(--bg-hover); }
 
     .btn-ctrl.active {
       background: var(--btn-active-bg);
@@ -138,7 +131,7 @@
       border-color: var(--btn-active-bg);
     }
 
-    /* 개인화 설정 서랍 (관심 형광펜 / 제외 뮤트 키워드) */
+    /* 개인화 키워드 서랍 */
     .drawer {
       display: none;
       background: var(--bg-panel);
@@ -150,9 +143,7 @@
       flex-direction: column;
     }
 
-    .drawer.open {
-      display: flex;
-    }
+    .drawer.open { display: flex; }
 
     .drawer-row {
       display: flex;
@@ -162,10 +153,7 @@
       font-size: 12px;
     }
 
-    .drawer-label {
-      font-weight: 700;
-      min-width: 125px;
-    }
+    .drawer-label { font-weight: 700; min-width: 125px; }
 
     .drawer-input {
       background: var(--bg-main);
@@ -239,9 +227,7 @@
       white-space: nowrap;
     }
 
-    .kw-chip:hover {
-      background: var(--bg-hover);
-    }
+    .kw-chip:hover { background: var(--bg-hover); }
 
     .kw-chip.active {
       background: var(--btn-active-bg);
@@ -319,7 +305,7 @@
       flex-wrap: wrap;
     }
 
-    /* 게시글 리스트 (전광판) */
+    /* 게시글 리스트 */
     .board-list {
       background: var(--bg-panel);
       border: 1px solid var(--border);
@@ -342,12 +328,8 @@
     .post-row:last-child { border-bottom: none; }
     .post-row:hover { background: var(--bg-hover); }
 
-    /* 관심 키워드 형광펜 하이라이트 */
-    .post-row.highlighted {
-      background: var(--highlight-bg);
-    }
+    .post-row.highlighted { background: var(--highlight-bg); }
 
-    /* 읽은 글 처리 */
     .post-row:visited .post-title,
     .post-row.visited .post-title {
       color: var(--text-visited);
@@ -361,7 +343,6 @@
       flex: 1;
     }
 
-    /* 사이트 아이콘 (파비콘) */
     .site-icon {
       width: 16px;
       height: 16px;
@@ -386,11 +367,11 @@
       font-size: 14px;
     }
 
-    /* 우측 가격 및 무배 배지 영역 */
+    /* 우측 가격 · 무배 · 작성시간 영역 */
     .post-right {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 7px;
       white-space: nowrap;
       flex-shrink: 0;
     }
@@ -411,6 +392,14 @@
       font-variant-numeric: tabular-nums;
     }
 
+    .tag-time {
+      font-size: 12px;
+      color: var(--text-muted);
+      min-width: 48px;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
     .more-wrap {
       margin-top: 12px;
       text-align: center;
@@ -428,9 +417,7 @@
       cursor: pointer;
     }
 
-    .btn-more:hover {
-      background: var(--bg-hover);
-    }
+    .btn-more:hover { background: var(--bg-hover); }
 
     .empty-state {
       padding: 40px;
@@ -443,6 +430,7 @@
       .controls { width: 100%; justify-content: space-between; }
       .key-hint { display: none; }
       .post-row { padding: 10px; }
+      .tag-time { min-width: 40px; font-size: 11px; }
     }
   </style>
 </head>
@@ -464,7 +452,6 @@
     </div>
   </header>
 
-  <!-- 개인화 키워드 서랍 -->
   <section class="drawer" id="keywordDrawer">
     <div class="drawer-row">
       <span class="drawer-label">🖍️ 관심 형광펜 (상단고정)</span>
@@ -478,7 +465,6 @@
     </div>
   </section>
 
-  <!-- 핫 키워드 바 + 우측 끝 고정 리셋 버튼 -->
   <div class="keyword-wrap">
     <div class="keyword-bar" id="keywordBar">
       <span class="keyword-label">🔥 인기</span>
@@ -486,7 +472,6 @@
     <button class="btn-reset" id="resetBtn" title="선택된 키워드 및 필터 전체 해제">↺ 전체보기</button>
   </div>
 
-  <!-- 카테고리 탭 + 3대 퀵 필터 -->
   <div class="nav-bar">
     <nav class="tabs" id="categoryTabs">
       <button class="tab-btn active" data-cat="ALL">전체 <span class="key-hint">1</span></button>
@@ -511,16 +496,18 @@
 </div>
 
 <script>
-  const DATA_URL = "https://raw.githubusercontent.com/jannabi1980/hotdeal-radar/main/data.json";
+  // GitHub 5분 캐시 지연을 피하기 위해 실시간 API를 1순위로 호출
+  const API_URL = "https://api.github.com/repos/jannabi1980/hotdeal-radar/contents/data.json";
+  const RAW_URL = "https://raw.githubusercontent.com/jannabi1980/hotdeal-radar/main/data.json";
   const INITIAL_LIMIT = 80;
 
-  // 8대 핫딜 커뮤니티 도메인 매핑 (파비콘 아이콘 자동 호출용)
+  // 뽐뿌 등 파비콘이 정확히 뜨도록 정규 도메인 지정
   const SITE_DOMAINS = {
-    "뽐뿌": "ppomppu.co.kr",
-    "이토랜드": "etoland.co.kr",
-    "클리앙": "clien.net",
-    "루리웹": "ruliweb.com",
-    "딜바다": "dealbada.com",
+    "뽐뿌": "www.ppomppu.co.kr",
+    "이토랜드": "www.etoland.co.kr",
+    "클리앙": "www.clien.net",
+    "루리웹": "bbs.ruliweb.com",
+    "딜바다": "www.dealbada.com",
     "어미새": "eomisae.co.kr",
     "퀘이사존": "quasarzone.com",
     "아카라이브": "arca.live"
@@ -538,7 +525,6 @@
   let favKeywords = JSON.parse(localStorage.getItem("fav_keywords") || "[]");
   let muteKeywords = JSON.parse(localStorage.getItem("mute_keywords") || "[]");
 
-  // 테마 초기화 (기본: 화이트, 저장값이 dark일 때만 다크)
   const themeBtn = document.getElementById("themeBtn");
   if (localStorage.getItem("theme_mode") === "dark") {
     document.body.classList.add("dark");
@@ -553,7 +539,6 @@
     themeBtn.classList.toggle("active", isDark);
   });
 
-  // 내 키워드 서랍 열기/닫기
   const drawerBtn = document.getElementById("drawerBtn");
   const keywordDrawer = document.getElementById("keywordDrawer");
   drawerBtn.addEventListener("click", () => {
@@ -562,12 +547,10 @@
   });
 
   function renderUserTags() {
-    const favEl = document.getElementById("favList");
-    const muteEl = document.getElementById("muteList");
-    favEl.innerHTML = favKeywords.map((kw, idx) =>
+    document.getElementById("favList").innerHTML = favKeywords.map((kw, idx) =>
       `<span class="user-tag">🖍️ ${escapeHtml(kw)} <button onclick="removeFav(${idx})">✕</button></span>`
     ).join("");
-    muteEl.innerHTML = muteKeywords.map((kw, idx) =>
+    document.getElementById("muteList").innerHTML = muteKeywords.map((kw, idx) =>
       `<span class="user-tag">🚫 ${escapeHtml(kw)} <button onclick="removeMute(${idx})">✕</button></span>`
     ).join("");
   }
@@ -612,23 +595,17 @@
     }
   });
 
-  // 클라이언트 측 보조 가격/무배 파서 (구버전 data.json 호환용)
-  function ensureMeta(item) {
-    if (item.price_str === undefined) {
-      item.free_ship = /무배|무료\s*배송|와우\s*무배|무료|free/i.test(item.title);
-      const m = item.title.match(/(\d{1,3}(?:,\d{3})+|\d{3,7})\s*원/);
-      if (m) {
-        const n = parseInt(m[1].replace(/,/g, ""), 10);
-        if (n >= 100 && n <= 50000000) {
-          item.price_num = n;
-          item.price_str = n.toLocaleString() + "원";
-        }
-      } else {
-        item.price_str = "";
-        item.price_num = null;
-      }
+  // 타임스탬프(초)를 현재 시각 기준 'N분 전', 'N시간 전'으로 실시간 변환
+  function calcRelTime(item) {
+    if (item.timestamp) {
+      const nowSec = Math.floor(Date.now() / 1000);
+      const diff = Math.max(0, nowSec - item.timestamp);
+      if (diff < 60) return "방금 전";
+      if (diff < 3600) return `${Math.floor(diff / 60)}분 전`;
+      if (diff < 86400) return `${Math.floor(diff / 3600)}시간 전`;
+      return `${Math.floor(diff / 86400)}일 전`;
     }
-    return item;
+    return item.time_str || "방금 전";
   }
 
   let currentKeywordsList = [];
@@ -637,11 +614,20 @@
     const statusEl = document.getElementById("updateTime");
     statusEl.textContent = "동기화 중...";
     try {
-      const res = await fetch(`${DATA_URL}?t=${Date.now()}`);
-      if (!res.ok) throw new Error("원격 데이터 없음");
-      const data = await res.json();
+      let data;
+      try {
+        const res = await fetch(`${API_URL}?t=${Date.now()}`, {
+          headers: { "Accept": "application/vnd.github.v3.raw" },
+          cache: "no-store"
+        });
+        if (!res.ok) throw new Error("API 제한");
+        data = await res.json();
+      } catch (_) {
+        const res2 = await fetch(`${RAW_URL}?t=${Date.now()}`, { cache: "no-store" });
+        data = await res2.json();
+      }
       statusEl.textContent = `최근 갱신: ${data.updated_at}`;
-      allItems = (data.items || []).map(ensureMeta);
+      allItems = data.items || [];
       currentKeywordsList = data.keywords || [];
       renderKeywords();
       renderBoard();
@@ -668,7 +654,6 @@
     });
   }
 
-  // 우측 끝 [↺ 전체보기] 리셋 버튼
   document.getElementById("resetBtn").addEventListener("click", () => {
     currentCategory = "ALL";
     currentKeyword = "";
@@ -693,22 +678,15 @@
 
     const filtered = allItems.filter(item => {
       const titleLower = item.title.toLowerCase();
-      // 1. 제외(뮤트) 키워드 필터링
       if (muteKeywords.some(m => titleLower.includes(m.toLowerCase()))) return false;
-      // 2. 카테고리 필터링
       if (currentCategory !== "ALL" && item.category !== currentCategory) return false;
-      // 3. 검색어 필터링
       if (query && !titleLower.includes(query) && !item.source.toLowerCase().includes(query)) return false;
-      // 4. 무료배송 필터
       if (onlyFreeShip && !item.free_ship) return false;
-      // 5. 1만 원 이하 가성비 필터
       if (onlyUnder10k && (!item.price_num || item.price_num > 10000)) return false;
-      // 6. 안 읽은 딜만 보기 필터
       if (onlyUnread && visitedLinks.has(item.url)) return false;
       return true;
     });
 
-    // 관심 키워드 포함 게시글을 최상단으로 우선 정렬
     const sorted = [...filtered].sort((a, b) => {
       const aFav = favKeywords.some(f => a.title.toLowerCase().includes(f.toLowerCase())) ? 1 : 0;
       const bFav = favKeywords.some(f => b.title.toLowerCase().includes(f.toLowerCase())) ? 1 : 0;
@@ -729,6 +707,7 @@
       const isHighlighted = matchedFav ? "highlighted" : "";
       const domain = SITE_DOMAINS[item.source] || "google.com";
       const iconUrl = `https://www.google.com/s2/favicons?domain=${domain}&sz=32`;
+      const relTime = calcRelTime(item);
 
       return `
         <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="post-row ${isVisited} ${isHighlighted}" data-url="${item.url}">
@@ -740,12 +719,12 @@
           <div class="post-right">
             ${item.free_ship ? `<span class="tag-ship">무배</span>` : ""}
             ${item.price_str ? `<span class="tag-price">${escapeHtml(item.price_str)}</span>` : ""}
+            <span class="tag-time">${escapeHtml(relTime)}</span>
           </div>
         </a>
       `;
     }).join("");
 
-    // 더보기 버튼 노출 제어
     if (sorted.length > displayLimit) {
       moreWrap.style.display = "block";
       moreBtn.textContent = `+ 지난 핫딜 ${sorted.length - displayLimit}개 더보기`;
@@ -768,7 +747,6 @@
     renderBoard();
   });
 
-  // 3대 퀵 필터 이벤트
   document.getElementById("filterFreeShip").addEventListener("click", (e) => {
     onlyFreeShip = !onlyFreeShip;
     e.currentTarget.classList.toggle("active", onlyFreeShip);
