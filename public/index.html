@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HOTDEAL RADAR - 7대 커뮤니티 실시간 핫딜 전광판</title>
+  <style>
+    :root {
+      --bg-main: #121316;
+      --bg-panel: #1a1c20;
+      --bg-hover: #24272d;
+      --text-main: #e2e4e8;
+      --text-muted: #8b929e;
+      --text-visited: #555962;
+      --accent: #3b82f6;
+      --accent-soft: rgba(59, 130, 246, 0.15);
+      --hot: #ef4444;
+      --border: #2a2d35;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Malgun Gothic", sans-serif;
+      font-size: 14px;
+      line-height: 1.4;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 12px 14px 40px;
+    }
+
+    /* 상단 헤더 & 컨트롤 바 */
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .brand h1 {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #fff;
+    }
+
+    .brand .status {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      justify-content: flex-end;
+    }
+
+    .search-box {
+      position: relative;
+      width: 240px;
+    }
+
+    .search-box input {
+      width: 100%;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .search-box input:focus {
+      border-color: var(--accent);
+    }
+
+    .btn-refresh {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .btn-refresh:hover {
+      background: var(--bg-hover);
+    }
+
+    /* 급상승 키워드 칩 바 */
+    .keyword-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+      padding: 8px 10px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      margin-bottom: 10px;
+      scrollbar-width: none;
+    }
+
+    .keyword-bar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .keyword-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--hot);
+      white-space: nowrap;
+      margin-right: 4px;
+    }
+
+    .kw-chip {
+      background: var(--bg-main);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+
+    .kw-chip:hover, .kw-chip.active {
+      color: #fff;
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    /* 카테고리 탭 (단축키 1~5 연동) */
+    .tabs {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      margin-bottom: 10px;
+      padding-bottom: 4px;
+    }
+
+    .tab-btn {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 7px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tab-btn .key-hint {
+      font-size: 10px;
+      background: var(--bg-main);
+      padding: 1px 5px;
+      border-radius: 3px;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .tab-btn.active .key-hint {
+      background: rgba(0, 0, 0, 0.25);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    /* 게시글 리스트 (전광판) */
+    .board-list {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .post-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text-main);
+      transition: background 0.1s;
+      gap: 10px;
+    }
+
+    .post-row:last-child {
+      border-bottom: none;
+    }
+
+    .post-row:hover {
+      background: var(--bg-hover);
+    }
+
+    /* 방문한 링크 색상 차분하게 처리 */
+    .post-row:visited .post-title,
+    .post-row.visited .post-title {
+      color: var(--text-visited);
+    }
+
+    .post-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .badge-source {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      white-space: nowrap;
+      background: #2b303c;
+      color: #a5b4fc;
+      min-width: 62px;
+      text-align: center;
+    }
+
+    /* 핫딜 4대 품목별 배지 컬러 */
+    .badge-source[data-cat="전자/PC"] { background: rgba(59, 130, 246, 0.18); color: #93c5fd; }
+    .badge-source[data-cat="식품/생필품"] { background: rgba(16, 185, 129, 0.18); color: #6ee7b7; }
+    .badge-source[data-cat="패션/의류"] { background: rgba(236, 72, 153, 0.18); color: #f9a8d4; }
+    .badge-source[data-cat="상품권/기타"] { background: rgba(245, 158, 11, 0.18); color: #fcd34d; }
+
+    .post-title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 14px;
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .meta-hot {
+      color: var(--hot);
+      font-weight: 600;
+    }
+
+    .empty-state {
+      padding: 40px;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 600px) {
+      .search-box { width: 100%; }
+      .controls { width: 100%; }
+      .key-hint { display: none; }
+      .post-row { padding: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="brand">
+      <h1>HOTDEAL RADAR</h1>
+      <span class="status" id="updateTime">데이터 불러오는 중...</span>
+    </div>
+    <div class="controls">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="핫딜 검색 (단축키 / )">
+      </div>
+      <button class="btn-refresh" id="refreshBtn" title="새로고침 (단축키 R)">↻ 갱신</button>
+    </div>
+  </header>
+
+  <div class="keyword-bar" id="keywordBar">
+    <span class="keyword-label">🔥 핫 키워드</span>
+  </div>
+
+  <nav class="tabs" id="categoryTabs">
+    <button class="tab-btn active" data-cat="ALL">전체 핫딜 <span class="key-hint">1</span></button>
+    <button class="tab-btn" data-cat="전자/PC">디지털/가전 <span class="key-hint">2</span></button>
+    <button class="tab-btn" data-cat="식품/생필품">식품/생필품 <span class="key-hint">3</span></button>
+    <button class="tab-btn" data-cat="패션/의류">패션/의류 <span class="key-hint">4</span></button>
+    <button class="tab-btn" data-cat="상품권/기타">상품권/기타 <span class="key-hint">5</span></button>
+  </nav>
+
+  <main class="board-list" id="boardList"></main>
+</div>
+
+<script>
+  // ★ 아래 주소의 '내깃허브아이디'와 'hotdeal-radar'를 본인 정보로 바꿔주세요!
+  const DATA_URL = "https://raw.githubusercontent.com/jannabi1980/hotdeal-radar/main/data.json";
+
+  // 첫 크롤링 전에도 화면이 잘 나오는지 확인하기 위한 기본 샘플 데이터
+  const FALLBACK_DATA = {
+    updated_at: "연동 대기 중 (샘플 모드)",
+    keywords: ["알리", "쿠팡", "모니터", "프로틴", "나이키", "생수"],
+    items: [
+      { title: "[알리] 27인치 QHD 165Hz 게이밍 모니터 특가 (149,000원/무료)", url: "https://arca.live/b/hotdeal", source: "아카라이브", category: "전자/PC", metric: "추천 42", time: "실시간" },
+      { title: "[쿠팡] 곰곰 단백질 프로틴 바 40개입 로켓프레시 (16,900원/무배)", url: "https://m.ppomppu.co.kr", source: "뽐뿌", category: "식품/생필품", metric: "특가", time: "최신" },
+      { title: "[네이버] 나이키 에어포스1 & 데이브레이크 카드사 할인 (69,000원/무배)", url: "https://eomisae.co.kr/fs", source: "어미새", category: "패션/의류", metric: "패션딜", time: "최신" },
+      { title: "[스팀] 주말 배급사 세일 역대 최저가 타이틀 모음", url: "https://bbs.ruliweb.com/market/board/1020", source: "루리웹", category: "상품권/기타", metric: "핫딜", time: "실시간" }
+    ]
+  };
+
+  let allItems = [];
+  let currentCategory = "ALL";
+  let currentKeyword = "";
+  let visitedLinks = new Set(JSON.parse(localStorage.getItem("visited_links") || "[]"));
+
+  async function loadData() {
+    const statusEl = document.getElementById("updateTime");
+    statusEl.textContent = "동기화 중...";
+    try {
+      const res = await fetch(`${DATA_URL}?t=${Date.now()}`);
+      if (!res.ok) throw new Error("원격 데이터 없음");
+      const data = await res.json();
+      applyData(data);
+    } catch (err) {
+      applyData(FALLBACK_DATA);
+    }
+  }
+
+  function applyData(data) {
+    document.getElementById("updateTime").textContent = `최근 갱신: ${data.updated_at}`;
+    allItems = data.items || [];
+    renderKeywords(data.keywords || []);
+    renderBoard();
+  }
+
+  function renderKeywords(keywords) {
+    const bar = document.getElementById("keywordBar");
+    bar.innerHTML = `<span class="keyword-label">🔥 핫 키워드</span>`;
+    keywords.forEach(kw => {
+      const chip = document.createElement("button");
+      chip.className = `kw-chip ${currentKeyword === kw ? "active" : ""}`;
+      chip.textContent = `#${kw}`;
+      chip.onclick = () => {
+        currentKeyword = (currentKeyword === kw) ? "" : kw;
+        document.getElementById("searchInput").value = currentKeyword;
+        renderKeywords(keywords);
+        renderBoard();
+      };
+      bar.appendChild(chip);
+    });
+  }
+
+  function renderBoard() {
+    const listEl = document.getElementById("boardList");
+    const query = document.getElementById("searchInput").value.trim().toLowerCase();
+
+    const filtered = allItems.filter(item => {
+      const matchCat = (currentCategory === "ALL") || (item.category === currentCategory);
+      const matchQuery = !query || item.title.toLowerCase().includes(query) || item.source.toLowerCase().includes(query);
+      return matchCat && matchQuery;
+    });
+
+    if (filtered.length === 0) {
+      listEl.innerHTML = `<div class="empty-state">조건에 맞는 핫딜이 없습니다.</div>`;
+      return;
+    }
+
+    listEl.innerHTML = filtered.map(item => {
+      const isVisited = visitedLinks.has(item.url) ? "visited" : "";
+      return `
+        <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="post-row ${isVisited}" data-url="${item.url}">
+          <div class="post-left">
+            <span class="badge-source" data-cat="${item.category}">${escapeHtml(item.source)}</span>
+            <span class="post-title">${escapeHtml(item.title)}</span>
+          </div>
+          <div class="post-meta">
+            ${item.metric ? `<span class="meta-hot">${escapeHtml(item.metric)}</span>` : ""}
+            <span>${escapeHtml(item.time)}</span>
+          </div>
+        </a>
+      `;
+    }).join("");
+
+    listEl.querySelectorAll(".post-row").forEach(row => {
+      row.addEventListener("click", () => {
+        const url = row.getAttribute("data-url");
+        visitedLinks.add(url);
+        row.classList.add("visited");
+        localStorage.setItem("visited_links", JSON.stringify([...visitedLinks].slice(-500)));
+      });
+    });
+  }
+
+  function escapeHtml(str) {
+    return String(str || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentCategory = btn.getAttribute("data-cat");
+      renderBoard();
+    });
+  });
+
+  document.getElementById("searchInput").addEventListener("input", renderBoard);
+  document.getElementById("refreshBtn").addEventListener("click", loadData);
+
+  window.addEventListener("keydown", (e) => {
+    if (document.activeElement.tagName === "INPUT") {
+      if (e.key === "Escape") document.activeElement.blur();
+      return;
+    }
+    const tabs = document.querySelectorAll(".tab-btn");
+    if (e.key >= "1" && e.key <= String(tabs.length)) {
+      tabs[Number(e.key) - 1].click();
+    } else if (e.key === "/") {
+      e.preventDefault();
+      document.getElementById("searchInput").focus();
+    } else if (e.key.toLowerCase() === "r") {
+      loadData();
+    }
+  });
+
+  loadData();
+</script>
+</body>
+</html>
