@@ -3,43 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HOTDEAL RADAR - 7대 커뮤니티 실시간 핫딜 전광판</title>
+  <title>HOTDEAL RADAR - 실시간 핫딜 전광판</title>
   <style>
+    /* 기본: 화이트(라이트) 테마 */
     :root {
+      --bg-main: #f8f9fa;
+      --bg-panel: #ffffff;
+      --bg-hover: #f1f3f5;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --text-visited: #9ca3af;
+      --border: #e5e7eb;
+      --btn-active-bg: #111827;
+      --btn-active-text: #ffffff;
+      --highlight-bg: #fef9c3;
+      --highlight-border: #fde047;
+      --price-text: #111827;
+      --ship-bg: #f3f4f6;
+      --ship-text: #374151;
+    }
+
+    /* 다크 모드 전환 시: 블랙 바탕 + 화이트 글씨 */
+    body.dark {
       --bg-main: #121316;
       --bg-panel: #1a1c20;
       --bg-hover: #24272d;
-      --text-main: #e2e4e8;
-      --text-muted: #8b929e;
-      --text-visited: #555962;
-      --accent: #3b82f6;
-      --accent-soft: rgba(59, 130, 246, 0.15);
-      --hot: #ef4444;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-visited: #525866;
       --border: #2a2d35;
+      --btn-active-bg: #ffffff;
+      --btn-active-text: #111827;
+      --highlight-bg: rgba(250, 204, 21, 0.14);
+      --highlight-border: rgba(250, 204, 21, 0.4);
+      --price-text: #ffffff;
+      --ship-bg: #2b303c;
+      --ship-text: #d1d5db;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       background-color: var(--bg-main);
       color: var(--text-main);
       font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Malgun Gothic", sans-serif;
       font-size: 14px;
-      line-height: 1.4;
+      line-height: 1.45;
       -webkit-font-smoothing: antialiased;
+      transition: background-color 0.15s, color 0.15s;
     }
 
     .container {
       max-width: 980px;
       margin: 0 auto;
-      padding: 12px 14px 40px;
+      padding: 14px 14px 50px;
     }
 
-    /* 상단 헤더 & 컨트롤 바 */
+    /* 상단 헤더 */
     header {
       display: flex;
       flex-wrap: wrap;
@@ -48,7 +68,7 @@
       gap: 10px;
       padding-bottom: 12px;
       border-bottom: 1px solid var(--border);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .brand {
@@ -58,10 +78,9 @@
     }
 
     .brand h1 {
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 800;
       letter-spacing: -0.5px;
-      color: #fff;
     }
 
     .brand .status {
@@ -72,14 +91,13 @@
     .controls {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       flex: 1;
       justify-content: flex-end;
     }
 
     .search-box {
-      position: relative;
-      width: 240px;
+      width: 210px;
     }
 
     .search-box input {
@@ -94,10 +112,10 @@
     }
 
     .search-box input:focus {
-      border-color: var(--accent);
+      border-color: var(--text-main);
     }
 
-    .btn-refresh {
+    .btn-ctrl {
       background: var(--bg-panel);
       border: 1px solid var(--border);
       color: var(--text-main);
@@ -105,70 +123,172 @@
       border-radius: 6px;
       cursor: pointer;
       font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: all 0.12s;
     }
 
-    .btn-refresh:hover {
+    .btn-ctrl:hover {
       background: var(--bg-hover);
     }
 
-    /* 급상승 키워드 칩 바 */
+    .btn-ctrl.active {
+      background: var(--btn-active-bg);
+      color: var(--btn-active-text);
+      border-color: var(--btn-active-bg);
+    }
+
+    /* 개인화 설정 서랍 (관심 형광펜 / 제외 뮤트 키워드) */
+    .drawer {
+      display: none;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 10px;
+      gap: 12px;
+      flex-direction: column;
+    }
+
+    .drawer.open {
+      display: flex;
+    }
+
+    .drawer-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .drawer-label {
+      font-weight: 700;
+      min-width: 125px;
+    }
+
+    .drawer-input {
+      background: var(--bg-main);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      width: 150px;
+    }
+
+    .user-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--bg-main);
+      border: 1px solid var(--border);
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+
+    .user-tag button {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 11px;
+    }
+
+    /* 핫 키워드 바 + 우측 고정 리셋 버튼 */
+    .keyword-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 10px;
+      margin-bottom: 10px;
+    }
+
     .keyword-bar {
       display: flex;
       align-items: center;
       gap: 6px;
       overflow-x: auto;
-      padding: 8px 10px;
-      background: var(--bg-panel);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      margin-bottom: 10px;
       scrollbar-width: none;
+      flex: 1;
     }
 
-    .keyword-bar::-webkit-scrollbar {
-      display: none;
-    }
+    .keyword-bar::-webkit-scrollbar { display: none; }
 
     .keyword-label {
       font-size: 11px;
       font-weight: 700;
-      color: var(--hot);
+      color: var(--text-muted);
       white-space: nowrap;
-      margin-right: 4px;
+      margin-right: 2px;
     }
 
     .kw-chip {
       background: var(--bg-main);
       border: 1px solid var(--border);
-      color: var(--text-muted);
+      color: var(--text-main);
       padding: 3px 8px;
       border-radius: 4px;
       font-size: 12px;
       cursor: pointer;
       white-space: nowrap;
-      transition: all 0.15s;
     }
 
-    .kw-chip:hover, .kw-chip.active {
-      color: #fff;
-      border-color: var(--accent);
-      background: var(--accent-soft);
+    .kw-chip:hover {
+      background: var(--bg-hover);
     }
 
-    /* 카테고리 탭 (단축키 1~5 연동) */
+    .kw-chip.active {
+      background: var(--btn-active-bg);
+      color: var(--btn-active-text);
+      border-color: var(--btn-active-bg);
+    }
+
+    .btn-reset {
+      background: var(--bg-main);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .btn-reset:hover {
+      background: var(--btn-active-bg);
+      color: var(--btn-active-text);
+      border-color: var(--btn-active-bg);
+    }
+
+    /* 상단 탭 & 우측 퀵 필터 바 */
+    .nav-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
     .tabs {
       display: flex;
-      gap: 6px;
+      gap: 5px;
       overflow-x: auto;
-      margin-bottom: 10px;
-      padding-bottom: 4px;
     }
 
     .tab-btn {
       background: var(--bg-panel);
       border: 1px solid var(--border);
-      color: var(--text-muted);
-      padding: 7px 12px;
+      color: var(--text-main);
+      padding: 6px 11px;
       border-radius: 6px;
       font-size: 13px;
       font-weight: 600;
@@ -176,28 +296,27 @@
       white-space: nowrap;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
     }
 
     .tab-btn .key-hint {
       font-size: 10px;
-      background: var(--bg-main);
-      padding: 1px 5px;
+      opacity: 0.6;
+      padding: 0 4px;
       border-radius: 3px;
-      color: var(--text-muted);
-      border: 1px solid var(--border);
+      border: 1px solid currentColor;
     }
 
     .tab-btn.active {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #fff;
+      background: var(--btn-active-bg);
+      border-color: var(--btn-active-bg);
+      color: var(--btn-active-text);
     }
 
-    .tab-btn.active .key-hint {
-      background: rgba(0, 0, 0, 0.25);
-      color: #fff;
-      border-color: transparent;
+    .quick-filters {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
     }
 
     /* 게시글 리스트 (전광판) */
@@ -216,19 +335,19 @@
       border-bottom: 1px solid var(--border);
       text-decoration: none;
       color: var(--text-main);
-      transition: background 0.1s;
       gap: 10px;
+      transition: background 0.1s;
     }
 
-    .post-row:last-child {
-      border-bottom: none;
+    .post-row:last-child { border-bottom: none; }
+    .post-row:hover { background: var(--bg-hover); }
+
+    /* 관심 키워드 형광펜 하이라이트 */
+    .post-row.highlighted {
+      background: var(--highlight-bg);
     }
 
-    .post-row:hover {
-      background: var(--bg-hover);
-    }
-
-    /* 방문한 링크 색상 차분하게 처리 */
+    /* 읽은 글 처리 */
     .post-row:visited .post-title,
     .post-row.visited .post-title {
       color: var(--text-visited);
@@ -237,28 +356,28 @@
     .post-left {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 9px;
       min-width: 0;
       flex: 1;
     }
 
-    .badge-source {
-      font-size: 11px;
-      font-weight: 700;
-      padding: 2px 6px;
-      border-radius: 4px;
-      white-space: nowrap;
-      background: #2b303c;
-      color: #a5b4fc;
-      min-width: 62px;
-      text-align: center;
+    /* 사이트 아이콘 (파비콘) */
+    .site-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 3px;
+      flex-shrink: 0;
+      object-fit: contain;
     }
 
-    /* 핫딜 4대 품목별 배지 컬러 */
-    .badge-source[data-cat="전자/PC"] { background: rgba(59, 130, 246, 0.18); color: #93c5fd; }
-    .badge-source[data-cat="식품/생필품"] { background: rgba(16, 185, 129, 0.18); color: #6ee7b7; }
-    .badge-source[data-cat="패션/의류"] { background: rgba(236, 72, 153, 0.18); color: #f9a8d4; }
-    .badge-source[data-cat="상품권/기타"] { background: rgba(245, 158, 11, 0.18); color: #fcd34d; }
+    .pin-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 3px;
+      border: 1px solid var(--highlight-border);
+      white-space: nowrap;
+    }
 
     .post-title {
       white-space: nowrap;
@@ -267,18 +386,50 @@
       font-size: 14px;
     }
 
-    .post-meta {
+    /* 우측 가격 및 무배 배지 영역 */
+    .post-right {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-size: 12px;
-      color: var(--text-muted);
+      gap: 6px;
       white-space: nowrap;
+      flex-shrink: 0;
     }
 
-    .meta-hot {
-      color: var(--hot);
+    .tag-ship {
+      font-size: 11px;
       font-weight: 600;
+      background: var(--ship-bg);
+      color: var(--ship-text);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .tag-price {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--price-text);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .more-wrap {
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    .btn-more {
+      width: 100%;
+      padding: 11px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .btn-more:hover {
+      background: var(--bg-hover);
     }
 
     .empty-state {
@@ -287,9 +438,9 @@
       color: var(--text-muted);
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
       .search-box { width: 100%; }
-      .controls { width: 100%; }
+      .controls { width: 100%; justify-content: space-between; }
       .key-hint { display: none; }
       .post-row { padding: 10px; }
     }
@@ -301,51 +452,186 @@
   <header>
     <div class="brand">
       <h1>HOTDEAL RADAR</h1>
-      <span class="status" id="updateTime">데이터 불러오는 중...</span>
+      <span class="status" id="updateTime">동기화 중...</span>
     </div>
     <div class="controls">
       <div class="search-box">
         <input type="text" id="searchInput" placeholder="핫딜 검색 (단축키 / )">
       </div>
-      <button class="btn-refresh" id="refreshBtn" title="새로고침 (단축키 R)">↻ 갱신</button>
+      <button class="btn-ctrl" id="drawerBtn" title="관심 형광펜 및 제외 키워드 설정">⚙️ 내 키워드</button>
+      <button class="btn-ctrl" id="themeBtn" title="화이트 / 다크 테마 전환">🌙 다크</button>
+      <button class="btn-ctrl" id="refreshBtn" title="새로고침 (단축키 R)">↻ 갱신</button>
     </div>
   </header>
 
-  <div class="keyword-bar" id="keywordBar">
-    <span class="keyword-label">🔥 핫 키워드</span>
+  <!-- 개인화 키워드 서랍 -->
+  <section class="drawer" id="keywordDrawer">
+    <div class="drawer-row">
+      <span class="drawer-label">🖍️ 관심 형광펜 (상단고정)</span>
+      <input type="text" class="drawer-input" id="favInput" placeholder="예: 생수, 모니터 (Enter)">
+      <div id="favList" style="display:flex; gap:5px; flex-wrap:wrap;"></div>
+    </div>
+    <div class="drawer-row">
+      <span class="drawer-label">🚫 제외 키워드 (숨김뮤트)</span>
+      <input type="text" class="drawer-input" id="muteInput" placeholder="예: 게임, 요금제 (Enter)">
+      <div id="muteList" style="display:flex; gap:5px; flex-wrap:wrap;"></div>
+    </div>
+  </section>
+
+  <!-- 핫 키워드 바 + 우측 끝 고정 리셋 버튼 -->
+  <div class="keyword-wrap">
+    <div class="keyword-bar" id="keywordBar">
+      <span class="keyword-label">🔥 인기</span>
+    </div>
+    <button class="btn-reset" id="resetBtn" title="선택된 키워드 및 필터 전체 해제">↺ 전체보기</button>
   </div>
 
-  <nav class="tabs" id="categoryTabs">
-    <button class="tab-btn active" data-cat="ALL">전체 핫딜 <span class="key-hint">1</span></button>
-    <button class="tab-btn" data-cat="전자/PC">디지털/가전 <span class="key-hint">2</span></button>
-    <button class="tab-btn" data-cat="식품/생필품">식품/생필품 <span class="key-hint">3</span></button>
-    <button class="tab-btn" data-cat="패션/의류">패션/의류 <span class="key-hint">4</span></button>
-    <button class="tab-btn" data-cat="상품권/기타">상품권/기타 <span class="key-hint">5</span></button>
-  </nav>
+  <!-- 카테고리 탭 + 3대 퀵 필터 -->
+  <div class="nav-bar">
+    <nav class="tabs" id="categoryTabs">
+      <button class="tab-btn active" data-cat="ALL">전체 <span class="key-hint">1</span></button>
+      <button class="tab-btn" data-cat="전자/PC">디지털/가전 <span class="key-hint">2</span></button>
+      <button class="tab-btn" data-cat="식품/생필품">식품/생필품 <span class="key-hint">3</span></button>
+      <button class="tab-btn" data-cat="패션/의류">패션/의류 <span class="key-hint">4</span></button>
+      <button class="tab-btn" data-cat="상품권/기타">상품권/기타 <span class="key-hint">5</span></button>
+    </nav>
+
+    <div class="quick-filters">
+      <button class="btn-ctrl" id="filterFreeShip">🚚 무료배송만</button>
+      <button class="btn-ctrl" id="filterUnder10k">🪙 1만 원 이하</button>
+      <button class="btn-ctrl" id="filterUnread">👁️ 안 읽은 딜만</button>
+    </div>
+  </div>
 
   <main class="board-list" id="boardList"></main>
+
+  <div class="more-wrap" id="moreWrap" style="display:none;">
+    <button class="btn-more" id="moreBtn">+ 지난 핫딜 더보기</button>
+  </div>
 </div>
 
 <script>
-  // ★ 아래 주소의 '내깃허브아이디'와 'hotdeal-radar'를 본인 정보로 바꿔주세요!
   const DATA_URL = "https://raw.githubusercontent.com/jannabi1980/hotdeal-radar/main/data.json";
+  const INITIAL_LIMIT = 80;
 
-  // 첫 크롤링 전에도 화면이 잘 나오는지 확인하기 위한 기본 샘플 데이터
-  const FALLBACK_DATA = {
-    updated_at: "연동 대기 중 (샘플 모드)",
-    keywords: ["알리", "쿠팡", "모니터", "프로틴", "나이키", "생수"],
-    items: [
-      { title: "[알리] 27인치 QHD 165Hz 게이밍 모니터 특가 (149,000원/무료)", url: "https://arca.live/b/hotdeal", source: "아카라이브", category: "전자/PC", metric: "추천 42", time: "실시간" },
-      { title: "[쿠팡] 곰곰 단백질 프로틴 바 40개입 로켓프레시 (16,900원/무배)", url: "https://m.ppomppu.co.kr", source: "뽐뿌", category: "식품/생필품", metric: "특가", time: "최신" },
-      { title: "[네이버] 나이키 에어포스1 & 데이브레이크 카드사 할인 (69,000원/무배)", url: "https://eomisae.co.kr/fs", source: "어미새", category: "패션/의류", metric: "패션딜", time: "최신" },
-      { title: "[스팀] 주말 배급사 세일 역대 최저가 타이틀 모음", url: "https://bbs.ruliweb.com/market/board/1020", source: "루리웹", category: "상품권/기타", metric: "핫딜", time: "실시간" }
-    ]
+  // 8대 핫딜 커뮤니티 도메인 매핑 (파비콘 아이콘 자동 호출용)
+  const SITE_DOMAINS = {
+    "뽐뿌": "ppomppu.co.kr",
+    "이토랜드": "etoland.co.kr",
+    "클리앙": "clien.net",
+    "루리웹": "ruliweb.com",
+    "딜바다": "dealbada.com",
+    "어미새": "eomisae.co.kr",
+    "퀘이사존": "quasarzone.com",
+    "아카라이브": "arca.live"
   };
 
   let allItems = [];
   let currentCategory = "ALL";
   let currentKeyword = "";
+  let onlyFreeShip = false;
+  let onlyUnder10k = false;
+  let onlyUnread = false;
+  let displayLimit = INITIAL_LIMIT;
+
   let visitedLinks = new Set(JSON.parse(localStorage.getItem("visited_links") || "[]"));
+  let favKeywords = JSON.parse(localStorage.getItem("fav_keywords") || "[]");
+  let muteKeywords = JSON.parse(localStorage.getItem("mute_keywords") || "[]");
+
+  // 테마 초기화 (기본: 화이트, 저장값이 dark일 때만 다크)
+  const themeBtn = document.getElementById("themeBtn");
+  if (localStorage.getItem("theme_mode") === "dark") {
+    document.body.classList.add("dark");
+    themeBtn.textContent = "☀️ 화이트";
+    themeBtn.classList.add("active");
+  }
+
+  themeBtn.addEventListener("click", () => {
+    const isDark = document.body.classList.toggle("dark");
+    localStorage.setItem("theme_mode", isDark ? "dark" : "light");
+    themeBtn.textContent = isDark ? "☀️ 화이트" : "🌙 다크";
+    themeBtn.classList.toggle("active", isDark);
+  });
+
+  // 내 키워드 서랍 열기/닫기
+  const drawerBtn = document.getElementById("drawerBtn");
+  const keywordDrawer = document.getElementById("keywordDrawer");
+  drawerBtn.addEventListener("click", () => {
+    const isOpen = keywordDrawer.classList.toggle("open");
+    drawerBtn.classList.toggle("active", isOpen);
+  });
+
+  function renderUserTags() {
+    const favEl = document.getElementById("favList");
+    const muteEl = document.getElementById("muteList");
+    favEl.innerHTML = favKeywords.map((kw, idx) =>
+      `<span class="user-tag">🖍️ ${escapeHtml(kw)} <button onclick="removeFav(${idx})">✕</button></span>`
+    ).join("");
+    muteEl.innerHTML = muteKeywords.map((kw, idx) =>
+      `<span class="user-tag">🚫 ${escapeHtml(kw)} <button onclick="removeMute(${idx})">✕</button></span>`
+    ).join("");
+  }
+
+  window.removeFav = (idx) => {
+    favKeywords.splice(idx, 1);
+    localStorage.setItem("fav_keywords", JSON.stringify(favKeywords));
+    renderUserTags();
+    renderBoard();
+  };
+
+  window.removeMute = (idx) => {
+    muteKeywords.splice(idx, 1);
+    localStorage.setItem("mute_keywords", JSON.stringify(muteKeywords));
+    renderUserTags();
+    renderBoard();
+  };
+
+  document.getElementById("favInput").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      const val = e.target.value.trim();
+      if (val && !favKeywords.includes(val)) {
+        favKeywords.push(val);
+        localStorage.setItem("fav_keywords", JSON.stringify(favKeywords));
+        e.target.value = "";
+        renderUserTags();
+        renderBoard();
+      }
+    }
+  });
+
+  document.getElementById("muteInput").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      const val = e.target.value.trim();
+      if (val && !muteKeywords.includes(val)) {
+        muteKeywords.push(val);
+        localStorage.setItem("mute_keywords", JSON.stringify(muteKeywords));
+        e.target.value = "";
+        renderUserTags();
+        renderBoard();
+      }
+    }
+  });
+
+  // 클라이언트 측 보조 가격/무배 파서 (구버전 data.json 호환용)
+  function ensureMeta(item) {
+    if (item.price_str === undefined) {
+      item.free_ship = /무배|무료\s*배송|와우\s*무배|무료|free/i.test(item.title);
+      const m = item.title.match(/(\d{1,3}(?:,\d{3})+|\d{3,7})\s*원/);
+      if (m) {
+        const n = parseInt(m[1].replace(/,/g, ""), 10);
+        if (n >= 100 && n <= 50000000) {
+          item.price_num = n;
+          item.price_str = n.toLocaleString() + "원";
+        }
+      } else {
+        item.price_str = "";
+        item.price_num = null;
+      }
+    }
+    return item;
+  }
+
+  let currentKeywordsList = [];
 
   async function loadData() {
     const statusEl = document.getElementById("updateTime");
@@ -354,66 +640,118 @@
       const res = await fetch(`${DATA_URL}?t=${Date.now()}`);
       if (!res.ok) throw new Error("원격 데이터 없음");
       const data = await res.json();
-      applyData(data);
+      statusEl.textContent = `최근 갱신: ${data.updated_at}`;
+      allItems = (data.items || []).map(ensureMeta);
+      currentKeywordsList = data.keywords || [];
+      renderKeywords();
+      renderBoard();
     } catch (err) {
-      applyData(FALLBACK_DATA);
+      statusEl.textContent = "데이터 연동 확인 필요";
     }
   }
 
-  function applyData(data) {
-    document.getElementById("updateTime").textContent = `최근 갱신: ${data.updated_at}`;
-    allItems = data.items || [];
-    renderKeywords(data.keywords || []);
-    renderBoard();
-  }
-
-  function renderKeywords(keywords) {
+  function renderKeywords() {
     const bar = document.getElementById("keywordBar");
-    bar.innerHTML = `<span class="keyword-label">🔥 핫 키워드</span>`;
-    keywords.forEach(kw => {
+    bar.innerHTML = `<span class="keyword-label">🔥 인기</span>`;
+    currentKeywordsList.forEach(kw => {
       const chip = document.createElement("button");
       chip.className = `kw-chip ${currentKeyword === kw ? "active" : ""}`;
       chip.textContent = `#${kw}`;
       chip.onclick = () => {
         currentKeyword = (currentKeyword === kw) ? "" : kw;
         document.getElementById("searchInput").value = currentKeyword;
-        renderKeywords(keywords);
+        displayLimit = INITIAL_LIMIT;
+        renderKeywords();
         renderBoard();
       };
       bar.appendChild(chip);
     });
   }
 
+  // 우측 끝 [↺ 전체보기] 리셋 버튼
+  document.getElementById("resetBtn").addEventListener("click", () => {
+    currentCategory = "ALL";
+    currentKeyword = "";
+    onlyFreeShip = false;
+    onlyUnder10k = false;
+    onlyUnread = false;
+    displayLimit = INITIAL_LIMIT;
+    document.getElementById("searchInput").value = "";
+    document.querySelectorAll(".tab-btn").forEach((b, i) => b.classList.toggle("active", i === 0));
+    document.getElementById("filterFreeShip").classList.remove("active");
+    document.getElementById("filterUnder10k").classList.remove("active");
+    document.getElementById("filterUnread").classList.remove("active");
+    renderKeywords();
+    renderBoard();
+  });
+
   function renderBoard() {
     const listEl = document.getElementById("boardList");
+    const moreWrap = document.getElementById("moreWrap");
+    const moreBtn = document.getElementById("moreBtn");
     const query = document.getElementById("searchInput").value.trim().toLowerCase();
 
     const filtered = allItems.filter(item => {
-      const matchCat = (currentCategory === "ALL") || (item.category === currentCategory);
-      const matchQuery = !query || item.title.toLowerCase().includes(query) || item.source.toLowerCase().includes(query);
-      return matchCat && matchQuery;
+      const titleLower = item.title.toLowerCase();
+      // 1. 제외(뮤트) 키워드 필터링
+      if (muteKeywords.some(m => titleLower.includes(m.toLowerCase()))) return false;
+      // 2. 카테고리 필터링
+      if (currentCategory !== "ALL" && item.category !== currentCategory) return false;
+      // 3. 검색어 필터링
+      if (query && !titleLower.includes(query) && !item.source.toLowerCase().includes(query)) return false;
+      // 4. 무료배송 필터
+      if (onlyFreeShip && !item.free_ship) return false;
+      // 5. 1만 원 이하 가성비 필터
+      if (onlyUnder10k && (!item.price_num || item.price_num > 10000)) return false;
+      // 6. 안 읽은 딜만 보기 필터
+      if (onlyUnread && visitedLinks.has(item.url)) return false;
+      return true;
     });
 
-    if (filtered.length === 0) {
-      listEl.innerHTML = `<div class="empty-state">조건에 맞는 핫딜이 없습니다.</div>`;
+    // 관심 키워드 포함 게시글을 최상단으로 우선 정렬
+    const sorted = [...filtered].sort((a, b) => {
+      const aFav = favKeywords.some(f => a.title.toLowerCase().includes(f.toLowerCase())) ? 1 : 0;
+      const bFav = favKeywords.some(f => b.title.toLowerCase().includes(f.toLowerCase())) ? 1 : 0;
+      return bFav - aFav;
+    });
+
+    if (sorted.length === 0) {
+      listEl.innerHTML = `<div class="empty-state">조건에 맞는 핫딜이 없습니다. 우측 상단 [↺ 전체보기]를 눌러보세요.</div>`;
+      moreWrap.style.display = "none";
       return;
     }
 
-    listEl.innerHTML = filtered.map(item => {
+    const visibleItems = sorted.slice(0, displayLimit);
+
+    listEl.innerHTML = visibleItems.map(item => {
       const isVisited = visitedLinks.has(item.url) ? "visited" : "";
+      const matchedFav = favKeywords.find(f => item.title.toLowerCase().includes(f.toLowerCase()));
+      const isHighlighted = matchedFav ? "highlighted" : "";
+      const domain = SITE_DOMAINS[item.source] || "google.com";
+      const iconUrl = `https://www.google.com/s2/favicons?domain=${domain}&sz=32`;
+
       return `
-        <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="post-row ${isVisited}" data-url="${item.url}">
+        <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="post-row ${isVisited} ${isHighlighted}" data-url="${item.url}">
           <div class="post-left">
-            <span class="badge-source" data-cat="${item.category}">${escapeHtml(item.source)}</span>
+            <img src="${iconUrl}" alt="${escapeHtml(item.source)}" title="${escapeHtml(item.source)}" class="site-icon" loading="lazy">
+            ${matchedFav ? `<span class="pin-badge">★ ${escapeHtml(matchedFav)}</span>` : ""}
             <span class="post-title">${escapeHtml(item.title)}</span>
           </div>
-          <div class="post-meta">
-            ${item.metric ? `<span class="meta-hot">${escapeHtml(item.metric)}</span>` : ""}
-            <span>${escapeHtml(item.time)}</span>
+          <div class="post-right">
+            ${item.free_ship ? `<span class="tag-ship">무배</span>` : ""}
+            ${item.price_str ? `<span class="tag-price">${escapeHtml(item.price_str)}</span>` : ""}
           </div>
         </a>
       `;
     }).join("");
+
+    // 더보기 버튼 노출 제어
+    if (sorted.length > displayLimit) {
+      moreWrap.style.display = "block";
+      moreBtn.textContent = `+ 지난 핫딜 ${sorted.length - displayLimit}개 더보기`;
+    } else {
+      moreWrap.style.display = "none";
+    }
 
     listEl.querySelectorAll(".post-row").forEach(row => {
       row.addEventListener("click", () => {
@@ -424,6 +762,30 @@
       });
     });
   }
+
+  document.getElementById("moreBtn").addEventListener("click", () => {
+    displayLimit += 50;
+    renderBoard();
+  });
+
+  // 3대 퀵 필터 이벤트
+  document.getElementById("filterFreeShip").addEventListener("click", (e) => {
+    onlyFreeShip = !onlyFreeShip;
+    e.currentTarget.classList.toggle("active", onlyFreeShip);
+    renderBoard();
+  });
+
+  document.getElementById("filterUnder10k").addEventListener("click", (e) => {
+    onlyUnder10k = !onlyUnder10k;
+    e.currentTarget.classList.toggle("active", onlyUnder10k);
+    renderBoard();
+  });
+
+  document.getElementById("filterUnread").addEventListener("click", (e) => {
+    onlyUnread = !onlyUnread;
+    e.currentTarget.classList.toggle("active", onlyUnread);
+    renderBoard();
+  });
 
   function escapeHtml(str) {
     return String(str || "")
@@ -438,11 +800,15 @@
       document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
       currentCategory = btn.getAttribute("data-cat");
+      displayLimit = INITIAL_LIMIT;
       renderBoard();
     });
   });
 
-  document.getElementById("searchInput").addEventListener("input", renderBoard);
+  document.getElementById("searchInput").addEventListener("input", () => {
+    displayLimit = INITIAL_LIMIT;
+    renderBoard();
+  });
   document.getElementById("refreshBtn").addEventListener("click", loadData);
 
   window.addEventListener("keydown", (e) => {
@@ -461,6 +827,7 @@
     }
   });
 
+  renderUserTags();
   loadData();
 </script>
 </body>
