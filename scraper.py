@@ -19,6 +19,7 @@ def smart_decode(content: bytes) -> str:
 
 def get_html(url: str) -> str:
     headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "Accept-Language": "ko-KR,ko;q=0.9,en-US;q=0.8",
         "Referer": "https://www.google.co.kr/"
@@ -79,23 +80,27 @@ def parse_time_to_ts(raw_time: str, now_ts: int) -> int:
         return int(dt.timestamp())
     return now_ts
 
-def format_rel_time(ts: int, now_ts: int) -> str:
-    diff = max(0, now_ts - ts)
-    if diff < 60:
-        return "방금 전"
-    if diff < 3600:
-        return f"{diff // 60}분 전"
-    if diff < 86400:
-        return f"{diff // 3600}시간 전"
-    return f"{diff // 86400}일 전"
-
 def classify_category(title: str) -> str:
     t = title.lower()
-    if any(k in t for k in ["모니터", "노트북", "그래픽", "rtx", "라데온", "ssd", "nvme", "램", "마우스", "키보드", "충전기", "갤럭시", "아이폰", "아이패드", "맥북", "tv", "청소기", "가전", "스팀", "ps5", "ps4", "닌텐도", "스위치", "이어폰", "헤드셋", "에디파이어", "스피커", "요금제", "모바일", "케이블", "어댑터", "마우스"]):
+    if any(k in t for k in [
+        "모니터", "노트북", "그래픽", "rtx", "라데온", "ssd", "nvme", "램", "마우스", "키보드",
+        "충전기", "갤럭시", "아이폰", "아이패드", "맥북", "tv", "청소기", "가전", "스팀", "ps5",
+        "ps4", "닌텐도", "스위치", "이어폰", "헤드셋", "에디파이어", "스피커", "요금제", "모바일",
+        "케이블", "어댑터", "태블릿", "워치", "버즈", "에어팟", "공유기", "cpu", "메인보드"
+    ]):
         return "전자/PC"
-    if any(k in t for k in ["생수", "커피", "우유", "닭가슴살", "프로틴", "라면", "만두", "과자", "초콜릿", "빼빼로", "쌀", "비타민", "유산균", "치약", "샴푸", "물티슈", "세제", "휴지", "돼지", "소고기", "콜라", "사이다", "펩시", "음료", "메가커피", "kfc", "버거", "샌드위치", "브레드", "빵", "감귤", "햇반", "참치", "김치", "물티슈"]):
+    if any(k in t for k in [
+        "생수", "커피", "우유", "닭가슴살", "프로틴", "라면", "만두", "과자", "초콜릿", "빼빼로",
+        "쌀", "비타민", "유산균", "치약", "샴푸", "물티슈", "세제", "휴지", "돼지", "소고기",
+        "콜라", "사이다", "펩시", "음료", "메가커피", "kfc", "버거", "샌드위치", "브레드", "빵",
+        "감귤", "햇반", "참치", "김치", "피자", "치킨", "고기", "삼겹살", "스팸", "볶음밥"
+    ]):
         return "식품/생필품"
-    if any(k in t for k in ["나이키", "아디다스", "뉴발란스", "맨투맨", "후드", "바지", "자켓", "야상", "리바이스", "패딩", "운동화", "슬리퍼", "티셔츠", "언더아머", "셔츠", "코트", "가방", "양말", "크록스", "모자"]):
+    if any(k in t for k in [
+        "나이키", "아디다스", "뉴발란스", "맨투맨", "후드", "바지", "자켓", "야상", "리바이스",
+        "패딩", "운동화", "슬리퍼", "티셔츠", "언더아머", "셔츠", "코트", "가방", "양말", "크록스",
+        "모자", "신발", "롱패딩", "드로즈", "팬츠", "슬랙스", "장갑"
+    ]):
         return "패션/의류"
     return "상품권/기타"
 
@@ -104,8 +109,16 @@ def parse_deal_meta(title: str):
     price_str = ""
     price_num = None
 
-    m_won = re.search(r"(\d{1,3}(?:,\d{3})+|\d{3,7})\s*원", title)
-    if m_won:
+    # 만원 단위(예: 12.5만원, 3만원) 및 일반 원 단위(예: 18,900원, 3500원) 정밀 인식
+    m_man = re.search(r"(\d+(?:\.\d+)?)\s*만\s*원?", title)
+    m_won = re.search(r"(\d{1,3}(?:,\d{3})+|\d{4,8})\s*원", title)
+
+    if m_man:
+        raw_val = float(m_man.group(1)) * 10000
+        if 5000 <= raw_val <= 50000000:
+            price_num = int(raw_val)
+            price_str = f"{price_num:,}원"
+    elif m_won:
         raw_num = int(m_won.group(1).replace(",", ""))
         if 100 <= raw_num <= 50000000:
             price_num = raw_num
@@ -115,23 +128,30 @@ def parse_deal_meta(title: str):
         if m_usd:
             val = m_usd.group(1) or m_usd.group(2)
             price_str = f"${val}"
-            price_num = int(float(val) * 1380)
+            price_num = int(float(val) * 1400)
 
     return price_str, price_num, free_ship
 
 def clean_title(text: str) -> str:
     text = html_lib.unescape(text)
-    text = text.replace("*", "")
+    text = text.replace("*", "").replace('"', '').replace("'", "")
     text = re.sub(r"\s+", " ", text).strip()
-    text = re.sub(r"\s*댓글\s*\d+개.*$", "", text)
-    text = re.sub(r"\s*\[\d+\]\s*$", "", text)
+    # 앞쪽 순위 번호 제거 (예: "1 표류도시", "10 듀얼소닉")
+    text = re.sub(r"^\d{1,2}\s+", "", text)
+    # 뒤쪽 댓글 수/말머리 제거 (예: "(45)", "[12]", "댓글 5개")
+    text = re.sub(r"\s*\(\d+\)$", "", text)
+    text = re.sub(r"\s*\[\d+\]$", "", text)
+    text = re.sub(r"\s*댓글\s*\d+개*$", "", text)
     text = re.sub(r"\s+20\d{2}\.\d{2}\.\d{2}.*$", "", text)
     text = re.sub(r"\s*\(\d+,\d+L\d+\)\s*$", "", text)
     return text.strip()
 
 def is_expired_or_notice(title: str) -> bool:
-    # 종료/품절만 확실히 걸르고 공지는 유연하게 허용
-    return any(k in title for k in ["종료된", "품절입니다", "판매종료", "모바일 앱 이용 안내"])
+    t = title.lower()
+    return any(k in t for k in [
+        "종료", "품절", "판매종료", "모바일 앱 이용 안내", "게시판 이용안내",
+        "이용안내", "공지사항", "이용규칙", "가이드라인"
+    ])
 
 def build_item(title: str, url: str, source: str, raw_time: str, prev_map: dict, now_ts: int):
     price_str, price_num, free_ship = parse_deal_meta(title)
@@ -148,8 +168,7 @@ def build_item(title: str, url: str, source: str, raw_time: str, prev_map: dict,
         "price_str": price_str,
         "price_num": price_num,
         "free_ship": free_ship,
-        "timestamp": ts,
-        "time_str": format_rel_time(ts, now_ts)
+        "timestamp": ts
     }
 
 def fetch_ppomppu(prev_map, now_ts):
@@ -162,6 +181,8 @@ def fetch_ppomppu(prev_map, now_ts):
         for idx, item in enumerate(root.findall("./channel/item")[:25]):
             title = clean_title(item.findtext("title", ""))
             link = item.findtext("link", "").strip()
+            if link.startswith("http://"):
+                link = "https://" + link[7:]
             pub_date = item.findtext("pubDate", "")
             if not title or is_expired_or_notice(title):
                 continue
@@ -194,14 +215,18 @@ def fetch_clien(prev_map, now_ts):
     try:
         html = get_html("https://m.clien.net/service/board/jirum")
         soup = BeautifulSoup(html, "html.parser")
-        for idx, a in enumerate(soup.select("a.list_subject")):
-            href = a.get("href", "").split("?")[0]
+        for idx, row in enumerate(soup.select("a.list_item[data-role='list-row']")):
+            title_el = row.select_one(".list_subject, [data-role='list-title-text']")
+            if not title_el:
+                continue
+            title = clean_title(title_el.get_text())
+            href = row.get("href", "").split("?")[0]
             if not re.search(r"/jirum/\d+$", href):
                 continue
-            title = clean_title(a.get_text())
             if len(title) < 4 or is_expired_or_notice(title):
                 continue
-            items.append(build_item(title, f"https://www.clien.net{href}", "클리앙", "", prev_map, now_ts - idx * 90))
+            link = f"https://www.clien.net{href}"
+            items.append(build_item(title, link, "클리앙", "", prev_map, now_ts - idx * 90))
             if len(items) >= 25:
                 break
         print(f"[성공] 클리앙: {len(items)}개")
@@ -219,7 +244,14 @@ def fetch_dealbada(prev_map, now_ts):
             if len(title) < 4 or is_expired_or_notice(title):
                 continue
             href = a.get("href", "")
-            link = href if href.startswith("http") else f"https://www.dealbada.com/bbs/{href.lstrip('/')}"
+            if href.startswith("//"):
+                link = f"https:{href}"
+            elif href.startswith("/"):
+                link = f"https://www.dealbada.com{href}"
+            elif not href.startswith("http"):
+                link = f"https://www.dealbada.com/bbs/{href}"
+            else:
+                link = href
             items.append(build_item(title, link, "딜바다", "", prev_map, now_ts - idx * 75))
             if len(items) >= 25:
                 break
@@ -233,7 +265,7 @@ def fetch_eomisae(prev_map, now_ts):
     try:
         html = get_html("https://eomisae.co.kr/fs")
         soup = BeautifulSoup(html, "html.parser")
-        for idx, a in enumerate(soup.select("td.title a.hx, div.card_content h3 a")):
+        for idx, a in enumerate(soup.select("a.pjax[href*='/fs/']")):
             href = a.get("href", "").split("?")[0]
             if not re.search(r"/fs/\d+$", href):
                 continue
@@ -259,10 +291,13 @@ def fetch_etoland(prev_map, now_ts):
         for idx, (raw_title, link) in enumerate(matches):
             if "/list" in link or not re.search(r"\d+", link):
                 continue
+            clean_link = link.split("#")[0].split("?")[0]
             title = clean_title(raw_title)
+            if re.fullmatch(r"\(?\d+\)?", title):
+                continue
             if len(title) < 4 or is_expired_or_notice(title):
                 continue
-            items.append(build_item(title, link.split("?")[0], "이토랜드", "", prev_map, now_ts - idx * 80))
+            items.append(build_item(title, clean_link, "이토랜드", "", prev_map, now_ts - idx * 80))
             if len(items) >= 25:
                 break
         print(f"[성공] 이토랜드: {len(items)}개")
@@ -270,38 +305,47 @@ def fetch_etoland(prev_map, now_ts):
         print(f"[오류] 이토랜드: {e}")
     return items
 
-def fetch_quasarzone(prev_map, now_ts):
-    items = []
-    try:
-        md = get_markdown_via_jina("https://quasarzone.com/bbs/qb_saleinfo")
-        matches = re.findall(r"\[([^\]]+)\]\((https://quasarzone\.com/bbs/qb_saleinfo/views/\d+[^\)]*)\)", md)
-        for idx, (raw_title, link) in enumerate(matches):
-            title = clean_title(raw_title)
-            if len(title) < 4 or is_expired_or_notice(title):
-                continue
-            items.append(build_item(title, link.split("?")[0], "퀘이사존", "", prev_map, now_ts - idx * 95))
-            if len(items) >= 25:
-                break
-        print(f"[성공] 퀘이사존: {len(items)}개")
-    except Exception as e:
-        print(f"[오류] 퀘이사존: {e}")
-    return items
-
 def fetch_arcalive(prev_map, now_ts):
     items = []
     try:
         md = get_markdown_via_jina("https://arca.live/b/hotdeal")
         matches = re.findall(r"\[([^\]]+)\]\((https://arca\.live/b/hotdeal/\d+[^\)]*)\)", md)
+        seen_urls = set()
         for idx, (raw_title, link) in enumerate(matches):
-            title = clean_title(raw_title)
-            if len(title) < 4 or is_expired_or_notice(title):
+            clean_url = link.split("?")[0]
+            if clean_url in seen_urls:
                 continue
-            items.append(build_item(title, link.split("?")[0], "아카라이브", "", prev_map, now_ts - idx * 70))
+            title = clean_title(raw_title)
+            if len(title) < 4 or is_expired_or_notice(title) or "![" in raw_title or "Image " in raw_title:
+                continue
+            seen_urls.add(clean_url)
+            items.append(build_item(title, clean_url, "아카라이브", "", prev_map, now_ts - idx * 70))
             if len(items) >= 25:
                 break
         print(f"[성공] 아카라이브: {len(items)}개")
     except Exception as e:
         print(f"[오류] 아카라이브: {e}")
+    return items
+
+def fetch_quasarzone(prev_map, now_ts):
+    items = []
+    try:
+        html = get_html("https://quasarzone.com/bbs/qb_saleinfo")
+        soup = BeautifulSoup(html, "html.parser")
+        for idx, a in enumerate(soup.select("a.tit, a[href*='/qb_saleinfo/views/']")):
+            title = clean_title(a.get_text())
+            href = a.get("href", "").split("?")[0]
+            if not re.search(r"/views/\d+$", href):
+                continue
+            if len(title) < 4 or is_expired_or_notice(title):
+                continue
+            link = f"https://quasarzone.com{href}" if not href.startswith("http") else href
+            items.append(build_item(title, link, "퀘이사존", "", prev_map, now_ts - idx * 95))
+            if len(items) >= 25:
+                break
+        print(f"[성공] 퀘이사존: {len(items)}개")
+    except Exception as e:
+        print(f"[알림] 퀘이사존 (보안 보호로 건너뜀): {e}")
     return items
 
 def interleave_lists(lists):
@@ -314,12 +358,16 @@ def interleave_lists(lists):
     return result
 
 def extract_hot_keywords(items):
-    stopwords = {"무료", "무배", "배송", "다양", "할인", "특가", "최대", "카드", "적립", "쿠폰", "만원", "천원", "핫딜", "예약", "가격", "인하", "판매", "전용"}
+    stopwords = {
+        "무료", "무배", "배송", "다양", "할인", "특가", "최대", "카드",
+        "적립", "쿠폰", "만원", "천원", "핫딜", "예약", "가격", "인하", "판매", "전용"
+    }
     words = []
     for item in items:
-        tokens = re.findall(r"[가-힣a-zA-Z0-9]{2,8}", item["title"])
+        cleaned = re.sub(r"\b\d+([,.]\d+)*\s*(원|개|입|팩|세트|box|박스|kg|g|ml|l|p|장)?\b", " ", item["title"], flags=re.I)
+        tokens = re.findall(r"[가-힣a-zA-Z]{2,8}", cleaned)
         for t in tokens:
-            if not t.isdigit() and t not in stopwords:
+            if t not in stopwords and not t.endswith("원") and not t.endswith("개"):
                 words.append(t)
     return [w for w, _ in Counter(words).most_common(10)] or ["쿠팡", "알리", "네이버", "지마켓", "스팀"]
 
@@ -334,8 +382,8 @@ def main():
         fetch_ruliweb(prev_map, now_ts),
         fetch_dealbada(prev_map, now_ts),
         fetch_eomisae(prev_map, now_ts),
-        fetch_quasarzone(prev_map, now_ts),
         fetch_arcalive(prev_map, now_ts),
+        fetch_quasarzone(prev_map, now_ts),
     ]
 
     mixed = interleave_lists(sources)
@@ -346,6 +394,9 @@ def main():
             seen.add(deal["url"])
             unique_deals.append(deal)
 
+    # 최신 등록시간순(timestamp 내림차순)으로 최종 정렬
+    unique_deals.sort(key=lambda x: x.get("timestamp", 0), reverse=True)
+
     now_str = datetime.now(KST).strftime("%Y-%m-%d %H:%M")
     payload = {
         "updated_at": now_str,
@@ -355,7 +406,7 @@ def main():
 
     with open("data.json", "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
-    print(f"[{now_str}] 8개 사이트 최종 통합 {len(unique_deals)}개 핫딜 저장 완료.")
+    print(f"[{now_str}] 핫딜 {len(unique_deals)}개 최종 저장 완료.")
 
 if __name__ == "__main__":
     main()
