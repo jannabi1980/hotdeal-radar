@@ -16,7 +16,8 @@
       --bg-hover: #f1f3f5;
       --text-main: #111827;
       --text-muted: #6b7280;
-      --text-visited: #9ca3af;
+      /* 방문한 글도 선명하고 읽기 편한 색상으로 조정 */
+      --text-visited: #64748b;
       --border: #e5e7eb;
       --btn-active-bg: #111827;
       --btn-active-text: #ffffff;
@@ -33,7 +34,7 @@
       --bg-hover: #24272d;
       --text-main: #f3f4f6;
       --text-muted: #9ca3af;
-      --text-visited: #525866;
+      --text-visited: #94a3b8;
       --border: #2a2d35;
       --btn-active-bg: #ffffff;
       --btn-active-text: #111827;
@@ -494,8 +495,6 @@
 </div>
 
 <script>
-  // 1순위: 전 세계 오픈소스 CDN(jsDelivr)으로 Rate Limit(시간당 60회) 차단 없이 무제한 수신
-  // 2순위: CDN 장애 시 GitHub RAW CDN으로 안전 폴백
   const DATA_URL = "https://cdn.jsdelivr.net/gh/jannabi1980/hotdeal-radar@main/data.json";
   const RAW_URL = "https://raw.githubusercontent.com/jannabi1980/hotdeal-radar/main/data.json";
   const INITIAL_LIMIT = 80;
@@ -674,14 +673,19 @@
       const titleLower = item.title.toLowerCase();
       if (muteKeywords.some(m => titleLower.includes(m.toLowerCase()))) return false;
       if (currentCategory !== "ALL" && item.category !== currentCategory) return false;
-      if (query && !titleLower.includes(query) && !item.source.toLowerCase().includes(query)) return false;
+      if (query) {
+        // '지마켓' 검색 시 'g마켓'도 자동 매칭
+        const altQuery = (query === "지마켓") ? "g마켓" : (query === "g마켓" ? "지마켓" : query);
+        const match = titleLower.includes(query) || titleLower.includes(altQuery) || item.source.toLowerCase().includes(query);
+        if (!match) return false;
+      }
       if (onlyFreeShip && !item.free_ship) return false;
       if (onlyUnder10k && (!item.price_num || item.price_num > 10000)) return false;
       if (onlyUnread && visitedLinks.has(item.url)) return false;
       return true;
     });
 
-    // 1순위: 관심 키워드 상단 고정, 2순위: 최신 등록시간순(timestamp 내림차순) 정렬
+    // 1순위: 관심 형광펜 키워드, 2순위: 최신 등록시간순(timestamp 내림차순) 정렬
     const sorted = [...filtered].sort((a, b) => {
       const aFav = favKeywords.some(f => a.title.toLowerCase().includes(f.toLowerCase())) ? 1 : 0;
       const bFav = favKeywords.some(f => b.title.toLowerCase().includes(f.toLowerCase())) ? 1 : 0;
