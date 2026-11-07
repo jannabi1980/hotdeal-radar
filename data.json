@@ -1,18 +1,78 @@
 {
-  "updated_at": "2026-11-08 02:42",
+  "updated_at": "2026-11-08 06:06",
   "keywords": [
     "11번가",
     "지마켓",
     "네이버",
-    "골라담기",
     "옥션",
-    "만원권",
     "롯데온",
     "네이버쇼핑",
-    "기프트카드",
-    "쿠팡"
+    "골라담기",
+    "만원권",
+    "쿠팡",
+    "WearOS"
   ],
   "items": [
+    {
+      "title": "스팸 클래식, 200g, 9개",
+      "url": "https://arca.live/b/hotdeal/188417054",
+      "source": "아카라이브",
+      "category": "식품/생필품",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": false,
+      "timestamp": 1794085421
+    },
+    {
+      "title": "29(3+2) 스니커즈 펀사이즈 160g",
+      "url": "https://etoland.co.kr/b/hotdeal/view/3432-%EC%8A%A4%EB%8B%88%EC%BB%A4%EC%A6%88-%ED%8E%80%EC%82%AC%EC%9D%B4%EC%A6%88-160g-9561888 \"(3+2",
+      "source": "이토랜드",
+      "category": "상품권/기타",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": false,
+      "timestamp": 1794084441
+    },
+    {
+      "title": "들기름김식탁20P(8매) 에코패키지 2세트",
+      "url": "https://etoland.co.kr/b/hotdeal/view/%EB%93%A4%EA%B8%B0%EB%A6%84%EA%B9%80%EC%8B%9D%ED%83%8120p8%EB%A7%A4-%EC%97%90%EC%BD%94%ED%8C%A8%ED%82%A4%EC%A7%80-2%EC%84%B8%ED%8A%B8-9561965 \"들기름김식탁20P(8매",
+      "source": "이토랜드",
+      "category": "상품권/기타",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": false,
+      "timestamp": 1794084361
+    },
+    {
+      "title": "[무인양품] 리브 니트 블루종 외 할인 모음",
+      "url": "https://eomisae.co.kr/fs/209680317",
+      "source": "어미새",
+      "category": "패션/의류",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": false,
+      "timestamp": 1794084241
+    },
+    {
+      "title": "슬로우스테디클럽 ~60%",
+      "url": "https://eomisae.co.kr/fs/209672972",
+      "source": "어미새",
+      "category": "패션/의류",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": false,
+      "timestamp": 1794084021
+    },
+    {
+      "title": "[11번가] 쟌슨빌 1670g 20810원",
+      "url": "https://bbs.ruliweb.com/market/board/1020/read/108824",
+      "source": "루리웹",
+      "category": "상품권/기타",
+      "price_str": "20,810원",
+      "price_num": 20810,
+      "free_ship": false,
+      "timestamp": 1794076329
+    },
     {
       "title": "(에픽 게임즈) 표류도시 & Idle Champions of the Forgotten Realms 무료 (11월13",
       "url": "https://www.clien.net/service/board/jirum/19289138",
@@ -22,16 +82,6 @@
       "price_num": null,
       "free_ship": true,
       "timestamp": 1794073361
-    },
-    {
-      "title": "포카칩 오리지널 66g 10개 + 어니언 66g 10개",
-      "url": "https://arca.live/b/hotdeal/188408046",
-      "source": "아카라이브",
-      "category": "상품권/기타",
-      "price_str": "",
-      "price_num": null,
-      "free_ship": false,
-      "timestamp": 1794073221
     },
     {
       "title": "동원 리챔 오리지널 200g 16캔",
@@ -134,16 +184,6 @@
       "timestamp": 1794072871
     },
     {
-      "title": "넾다) 파스쿠찌 오! 마이 초코(홀) (26,990원/무료)",
-      "url": "https://arca.live/b/hotdeal/188372054",
-      "source": "아카라이브",
-      "category": "상품권/기타",
-      "price_str": "26,990원",
-      "price_num": 26990,
-      "free_ship": true,
-      "timestamp": 1794072801
-    },
-    {
       "title": "그린올린 더 조은쌀 20kg",
       "url": "https://etoland.co.kr/b/hotdeal/view/%EA%B7%B8%EB%A6%B0%EC%98%AC%EB%A6%B0-%EB%8D%94-%EC%A1%B0%EC%9D%80%EC%8C%80-20kg-9561953 \"그린올린 더 조은쌀 20kg\"",
       "source": "이토랜드",
@@ -151,6 +191,16 @@
       "price_str": "",
       "price_num": null,
       "free_ship": false,
+      "timestamp": 1794072801
+    },
+    {
+      "title": "넾다) 파스쿠찌 오! 마이 초코(홀) (26,990원/무료)",
+      "url": "https://arca.live/b/hotdeal/188372054",
+      "source": "아카라이브",
+      "category": "상품권/기타",
+      "price_str": "26,990원",
+      "price_num": 26990,
+      "free_ship": true,
       "timestamp": 1794072801
     },
     {
@@ -212,16 +262,6 @@
       "price_num": null,
       "free_ship": false,
       "timestamp": 1794072321
-    },
-    {
-      "title": "빼빼로 골라담기 (9~12개)",
-      "url": "https://etoland.co.kr/b/hotdeal/view/%EB%B9%BC%EB%B9%BC%EB%A1%9C-%EA%B3%A8%EB%9D%BC%EB%8B%B4%EA%B8%B0-912%EA%B0%9C-9561849 \"빼빼로 골라담기 (9~12개",
-      "source": "이토랜드",
-      "category": "식품/생필품",
-      "price_str": "",
-      "price_num": null,
-      "free_ship": false,
-      "timestamp": 1794072241
     },
     {
       "title": "지마켓/옥션 빅스마일데이 기획전",
@@ -824,16 +864,6 @@
       "timestamp": 1794028447
     },
     {
-      "title": "호카 추가 가격 다운",
-      "url": "https://eomisae.co.kr/fs/209617778",
-      "source": "어미새",
-      "category": "패션/의류",
-      "price_str": "",
-      "price_num": null,
-      "free_ship": false,
-      "timestamp": 1794027712
-    },
-    {
       "title": "[롯데온] 츄파춥스 팝아트틴 150입+한정판 블루투스스피커 (16,910원/무료)",
       "url": "https://bbs.ruliweb.com/market/board/1020/read/108807",
       "source": "루리웹",
@@ -894,16 +924,6 @@
       "timestamp": 1793993160
     },
     {
-      "title": "후기포함 밀리타도 38mm ml05 40872원(+카드할인)",
-      "url": "https://eomisae.co.kr/fs/209625267",
-      "source": "어미새",
-      "category": "패션/의류",
-      "price_str": "40,872원",
-      "price_num": 40872,
-      "free_ship": false,
-      "timestamp": 1793990792
-    },
-    {
       "title": "[지마켓] ACER 프레데터 아틀라스8 빅스마일 / 2,149,000",
       "url": "https://bbs.ruliweb.com/market/board/1020/read/108800",
       "source": "루리웹",
@@ -942,16 +962,6 @@
       "price_num": 170000,
       "free_ship": false,
       "timestamp": 1793980219
-    },
-    {
-      "title": "[11번가] 올리브영 기프트카드 5만원권 (46,500원/무료)",
-      "url": "https://bbs.ruliweb.com/market/board/1020/read/108795",
-      "source": "루리웹",
-      "category": "상품권/기타",
-      "price_str": "46,500원",
-      "price_num": 46500,
-      "free_ship": true,
-      "timestamp": 1793978556
     },
     {
       "title": "아디다스 방한화 30,520원",
