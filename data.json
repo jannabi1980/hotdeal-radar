@@ -1,18 +1,548 @@
 {
-  "updated_at": "2026-11-12 06:18",
+  "updated_at": "2026-11-12 11:27",
   "keywords": [
     "지마켓",
-    "롯데온",
     "네이버",
-    "국내산",
-    "기프트코드",
-    "카카오",
+    "롯데온",
     "네이버페이",
-    "개입",
+    "세트",
     "쿠팡",
-    "Air"
+    "개입",
+    "선착순특가",
+    "국내산",
+    "만원권"
   ],
   "items": [
+    {
+      "title": "2026-11-12 일일적립, 클릭 42원",
+      "url": "https://etoland.co.kr/b/hotdeal/view/2026-11-12-%EC%9D%BC%EC%9D%BC%EC%A0%81%EB%A6%BD-%ED%81%B4%EB%A6%AD-40%EC%9B%90-9573646 \"2026-11-12 일일적립, 클릭 42원\"",
+      "source": "이토랜드",
+      "category": "상품권/기타",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": false,
+      "timestamp": 1794450449
+    },
+    {
+      "title": "레노마셔츠 비공개 패밀리세일",
+      "url": "https://www.clien.net/service/board/jirum/19291075",
+      "source": "클리앙",
+      "category": "패션/의류",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": false,
+      "timestamp": 1794450449
+    },
+    {
+      "title": "농심 인기 컵라면 세트 총24개 골라담기 (신라면+튀김우동+새우탕+오짬뽕)",
+      "url": "https://arca.live/b/hotdeal/188853913",
+      "source": "아카라이브",
+      "category": "식품/생필품",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": false,
+      "timestamp": 1794450309
+    },
+    {
+      "title": "프링글스 미니 오리지날 53g 외 3종 6+6+6",
+      "url": "https://arca.live/b/hotdeal/188853364",
+      "source": "아카라이브",
+      "category": "상품권/기타",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": false,
+      "timestamp": 1794450239
+    },
+    {
+      "title": "[퀸잇] 컬럼비아 마운틴사이드 헤비웨이트 플리스 4종 택1 (22,000원/무료)",
+      "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572677&page=1",
+      "source": "딜바다",
+      "category": "상품권/기타",
+      "price_str": "22,000원",
+      "price_num": 22000,
+      "free_ship": true,
+      "timestamp": 1794450224
+    },
+    {
+      "title": "선착순특가) 맛장군 열무김치, 3kg, 1팩",
+      "url": "https://etoland.co.kr/b/hotdeal/view/%EC%84%A0%EC%B0%A9%EC%88%9C%ED%8A%B9%EA%B0%80-%EB%A7%9B%EC%9E%A5%EA%B5%B0-%EC%97%B4%EB%AC%B4%EA%B9%80%EC%B9%98-3kg-1%ED%8C%A9-9573743 \"선착순특가",
+      "source": "이토랜드",
+      "category": "식품/생필품",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": false,
+      "timestamp": 1794450209
+    },
+    {
+      "title": "[네이버] 1인용 슈퍼싱글 전기장판 탄소매트 59,500원 무배",
+      "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572676&page=1",
+      "source": "딜바다",
+      "category": "상품권/기타",
+      "price_str": "59,500원",
+      "price_num": 59500,
+      "free_ship": true,
+      "timestamp": 1794450074
+    },
+    {
+      "title": "[네이버] 1+1 세니엘 로봇청소기 세제 로보락 호환 클리너 1L (9,900/무료)",
+      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748217",
+      "source": "뽐뿌",
+      "category": "전자/PC",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": true,
+      "timestamp": 1794450013
+    },
+    {
+      "title": "[오늘의집] 26년 첫 수확 햇 세척부사 사과 4kg (9,810원/무료)",
+      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748216",
+      "source": "뽐뿌",
+      "category": "상품권/기타",
+      "price_str": "9,810원",
+      "price_num": 9810,
+      "free_ship": true,
+      "timestamp": 1794450012
+    },
+    {
+      "title": "[네이버] 새청무 특등급,신동진 상등급,포크밸리 등 (다양/무료)",
+      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748215",
+      "source": "뽐뿌",
+      "category": "상품권/기타",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": true,
+      "timestamp": 1794449960
+    },
+    {
+      "title": "[쿠팡] 토라스 쿨리파이 2S 넥쿨러 냉각·온열·송풍 3모드 (118,900원/무료배송)",
+      "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572675&page=1",
+      "source": "딜바다",
+      "category": "상품권/기타",
+      "price_str": "118,900원",
+      "price_num": 118900,
+      "free_ship": true,
+      "timestamp": 1794449924
+    },
+    {
+      "title": "[네이버]하림 냉장 수비드 닭가슴살 6종 10팩 세트 (네멤17,900원, 무배)",
+      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748214",
+      "source": "뽐뿌",
+      "category": "식품/생필품",
+      "price_str": "17,900원",
+      "price_num": 17900,
+      "free_ship": true,
+      "timestamp": 1794449839
+    },
+    {
+      "title": "[지마켓] 비타프레쉬 비타민CD 귤젤리 100구미X2통 (17,900원/무료)",
+      "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572674&page=1",
+      "source": "딜바다",
+      "category": "식품/생필품",
+      "price_str": "17,900원",
+      "price_num": 17900,
+      "free_ship": true,
+      "timestamp": 1794449774
+    },
+    {
+      "title": "[지마켓] 비트 딥클린파워 액체세탁세제 일반/드럼 겸용 용기 4L 3개 (21,900원/무료)",
+      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748213",
+      "source": "뽐뿌",
+      "category": "식품/생필품",
+      "price_str": "21,900원",
+      "price_num": 21900,
+      "free_ship": true,
+      "timestamp": 1794449757
+    },
+    {
+      "title": "[지마켓]핫식스 더킹 제로 355ml 24캔 + 핫식스 퍼플 355ml 24캔(33,900원/무배)",
+      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748212",
+      "source": "뽐뿌",
+      "category": "상품권/기타",
+      "price_str": "33,900원",
+      "price_num": 33900,
+      "free_ship": true,
+      "timestamp": 1794449697
+    },
+    {
+      "title": "[남도장터] 국내산 숭어 어란 소금슬라이스 80g 등 (50,400원~/3500원)",
+      "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572673&page=1",
+      "source": "딜바다",
+      "category": "상품권/기타",
+      "price_str": "50,400원",
+      "price_num": 50400,
+      "free_ship": false,
+      "timestamp": 1794449624
+    },
+    {
+      "title": "독거미 풀배열 AULA F108 Pro (세이야축)",
+      "url": "https://etoland.co.kr/b/hotdeal/view/%EB%8F%85%EA%B1%B0%EB%AF%B8-%ED%92%80%EB%B0%B0%EC%97%B4-aula-f108-pro-%EC%84%B8%EC%9D%B4%EC%95%BC%EC%B6%95-9572846 \"독거미 풀배열 AULA F108 Pro (세이야축",
+      "source": "이토랜드",
+      "category": "상품권/기타",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": false,
+      "timestamp": 1794449569
+    },
+    {
+      "title": "네이버페이 적립 20원",
+      "url": "https://etoland.co.kr/b/hotdeal/view/20%EC%9B%90-9573279 \"네이버페이 적립 20원\"",
+      "source": "이토랜드",
+      "category": "상품권/기타",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": false,
+      "timestamp": 1794449489
+    },
+    {
+      "title": "[G마켓] 산들한우 1++등급 특수모듬구이 400g (20,560원/무료)",
+      "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572672&page=1",
+      "source": "딜바다",
+      "category": "상품권/기타",
+      "price_str": "20,560원",
+      "price_num": 20560,
+      "free_ship": true,
+      "timestamp": 1794449474
+    },
+    {
+      "title": "께비로또",
+      "url": "https://etoland.co.kr/b/hotdeal/view/%EA%BB%98%EB%B9%84%EB%A1%9C%EB%98%90-9572650 \"께비로또\"",
+      "source": "이토랜드",
+      "category": "상품권/기타",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": false,
+      "timestamp": 1794449329
+    },
+    {
+      "title": "[네이버] 한우 꽃등심 200g + 삼각살 200g (41,000원/네멤무배)",
+      "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572671&page=1",
+      "source": "딜바다",
+      "category": "상품권/기타",
+      "price_str": "41,000원",
+      "price_num": 41000,
+      "free_ship": true,
+      "timestamp": 1794449324
+    },
+    {
+      "title": "[네이버] 아이닛 위시블루 70매 20팩 캡형 75g 물티슈 (18,810원/무료)",
+      "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572670&page=1",
+      "source": "딜바다",
+      "category": "식품/생필품",
+      "price_str": "18,810원",
+      "price_num": 18810,
+      "free_ship": true,
+      "timestamp": 1794449174
+    },
+    {
+      "title": "오래쓰는 변기클리너 자동변기 세정제 260g 4개",
+      "url": "https://etoland.co.kr/b/hotdeal/view/%EC%98%A4%EB%9E%98%EC%93%B0%EB%8A%94-%EB%B3%80%EA%B8%B0%ED%81%B4%EB%A6%AC%EB%84%88-%EC%9E%90%EB%8F%99%EB%B3%80%EA%B8%B0-%EC%84%B8%EC%A0%95%EC%A0%9C-260g-4%EA%B0%9C-9572215 \"오래쓰는 변기클리너 자동변기 세정제 260g 4개\"",
+      "source": "이토랜드",
+      "category": "상품권/기타",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": false,
+      "timestamp": 1794449169
+    },
+    {
+      "title": "[온누리시장] 마장동 우예담 1등급 숙성한우 선물세트 800g (88,200원/무료)",
+      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748211",
+      "source": "뽐뿌",
+      "category": "상품권/기타",
+      "price_str": "88,200원",
+      "price_num": 88200,
+      "free_ship": true,
+      "timestamp": 1794449131
+    },
+    {
+      "title": "26년 햅쌀 진품경기미 상등급 20kg",
+      "url": "https://etoland.co.kr/b/hotdeal/view/26%EB%85%84-%ED%96%85%EC%8C%80-%EC%A7%84%ED%92%88%EA%B2%BD%EA%B8%B0%EB%AF%B8-%EC%83%81%EB%93%B1%EA%B8%89-20kg-9572414 \"26년 햅쌀 진품경기미 상등급 20kg\"",
+      "source": "이토랜드",
+      "category": "식품/생필품",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": false,
+      "timestamp": 1794449089
+    },
+    {
+      "title": "[G마켓] 제주 노지감귤 5kg 로얄과 2S-M (8,860원/무배)",
+      "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572669&page=1",
+      "source": "딜바다",
+      "category": "식품/생필품",
+      "price_str": "8,860원",
+      "price_num": 8860,
+      "free_ship": true,
+      "timestamp": 1794449024
+    },
+    {
+      "title": "국내산 농협안심한돈 냉장 삼겹살 목살 구이용/수육용 1kg",
+      "url": "https://etoland.co.kr/b/hotdeal/view/%EA%B5%AD%EB%82%B4%EC%82%B0-%EB%86%8D%ED%98%91%EC%95%88%EC%8B%AC%ED%95%9C%EB%8F%88-%EB%83%89%EC%9E%A5-%EC%82%BC%EA%B2%B9%EC%82%B4-%EB%AA%A9%EC%82%B4-%EA%B5%AC%EC%9D%B4%EC%9A%A9%EC%88%98%EC%9C%A1%EC%9A%A9-1kg-9572747 \"국내산 농협안심한돈 냉장 삼겹살 목살 구이용/수육용 1kg\"",
+      "source": "이토랜드",
+      "category": "식품/생필품",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": false,
+      "timestamp": 1794449009
+    },
+    {
+      "title": "[현대몰] 백년화편 합격기원 3호 12개입 밥알찹쌀떡 4개+영양찰떡 8개(32.000원/무배)",
+      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748210",
+      "source": "뽐뿌",
+      "category": "식품/생필품",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": true,
+      "timestamp": 1794448967
+    },
+    {
+      "title": "[지마켓] 바이타믹스 E310 초고속 블렌더 믹서기 1.4L 블랙 2way 텀블러(W) 증정 (391,100원/무료)",
+      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748209",
+      "source": "뽐뿌",
+      "category": "상품권/기타",
+      "price_str": "391,100원",
+      "price_num": 391100,
+      "free_ship": true,
+      "timestamp": 1794448935
+    },
+    {
+      "title": "맥심 화이트골드 커피믹스 400T / 커피 + N pay 2000원 (네이버페이 포인트)",
+      "url": "https://etoland.co.kr/b/hotdeal/view/%EB%A7%A5%EC%8B%AC-%ED%99%94%EC%9D%B4%ED%8A%B8%EA%B3%A8%EB%93%9C-%EC%BB%A4%ED%94%BC%EB%AF%B9%EC%8A%A4-400t-%EC%BB%A4%ED%94%BC-43-n-pay-2000%EC%9B%90-%EB%84%A4%EC%9D%B4%EB%B2%84%ED%8E%98%EC%9D%B4-%ED%8F%AC%EC%9D%B8%ED%8A%B8-9572474 \"맥심 화이트골드 커피믹스 400T / 커피 + N pay 2000원 (네이버페이 포인트",
+      "source": "이토랜드",
+      "category": "식품/생필품",
+      "price_str": "2,000원",
+      "price_num": 2000,
+      "free_ship": false,
+      "timestamp": 1794448929
+    },
+    {
+      "title": "프로스펙스 메타 넥워머 4,830원(무배)",
+      "url": "https://eomisae.co.kr/fs/210284324",
+      "source": "어미새",
+      "category": "패션/의류",
+      "price_str": "4,830원",
+      "price_num": 4830,
+      "free_ship": true,
+      "timestamp": 1794448909
+    },
+    {
+      "title": "[G마켓]CJ 맛밤 60g 20봉 20,640원/무료",
+      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748208",
+      "source": "뽐뿌",
+      "category": "상품권/기타",
+      "price_str": "20,640원",
+      "price_num": 20640,
+      "free_ship": true,
+      "timestamp": 1794448901
+    },
+    {
+      "title": "[젠하이저 공식몰] 헤드폰 이어폰 사운드바 등등",
+      "url": "https://bbs.ruliweb.com/market/board/1020/read/108968",
+      "source": "루리웹",
+      "category": "전자/PC",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": false,
+      "timestamp": 1794448883
+    },
+    {
+      "title": "[네이버] 홍야 고기짬뽕 2인분 1,260g (7,300원/네멤무료)",
+      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748207",
+      "source": "뽐뿌",
+      "category": "식품/생필품",
+      "price_str": "7,300원",
+      "price_num": 7300,
+      "free_ship": true,
+      "timestamp": 1794448873
+    },
+    {
+      "title": "선착순특가) 부국비닐봉투 일반마트봉투, 3호, 검정, 200장",
+      "url": "https://etoland.co.kr/b/hotdeal/view/%EC%84%A0%EC%B0%A9%EC%88%9C%ED%8A%B9%EA%B0%80-%EB%B6%80%EA%B5%AD%EB%B9%84%EB%8B%90%EB%B4%89%ED%88%AC-%EC%9D%BC%EB%B0%98%EB%A7%88%ED%8A%B8%EB%B4%89%ED%88%AC-3%ED%98%B8-%EA%B2%80%EC%A0%95-200%EC%9E%A5-9573731 \"선착순특가",
+      "source": "이토랜드",
+      "category": "상품권/기타",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": false,
+      "timestamp": 1794448849
+    },
+    {
+      "title": "[지마켓] 어그 시그니처 스웨이드 타스만 슬리퍼 (141,380원/무료)",
+      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748206",
+      "source": "뽐뿌",
+      "category": "패션/의류",
+      "price_str": "141,380원",
+      "price_num": 141380,
+      "free_ship": true,
+      "timestamp": 1794448803
+    },
+    {
+      "title": "[롯데온] 파세코 침구청소기 UV살균 열풍 건조 매트리스 쇼파 진드기제거 (롯데 국민 현대 46,030원/무료)",
+      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748205",
+      "source": "뽐뿌",
+      "category": "전자/PC",
+      "price_str": "46,030원",
+      "price_num": 46030,
+      "free_ship": true,
+      "timestamp": 1794448777
+    },
+    {
+      "title": "폴햄키즈 공용 벨로아 라운지웨어 실내복 세트",
+      "url": "https://etoland.co.kr/b/hotdeal/view/%ED%8F%B4%ED%96%84%ED%82%A4%EC%A6%88-%EA%B3%B5%EC%9A%A9-%EB%B2%A8%EB%A1%9C%EC%95%84-%EB%9D%BC%EC%9A%B4%EC%A7%80%EC%9B%A8%EC%96%B4-%EC%8B%A4%EB%82%B4%EB%B3%B5-%EC%84%B8%ED%8A%B8-9572770 \"폴햄키즈 공용 벨로아 라운지웨어 실내복 세트\"",
+      "source": "이토랜드",
+      "category": "상품권/기타",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": false,
+      "timestamp": 1794448769
+    },
+    {
+      "title": "[G마켓] 단독 세라젬 파우제 M4 안마의자 (2,330,000원 / 무료배송)",
+      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748204",
+      "source": "뽐뿌",
+      "category": "상품권/기타",
+      "price_str": "2,330,000원",
+      "price_num": 2330000,
+      "free_ship": true,
+      "timestamp": 1794448761
+    },
+    {
+      "title": "[지마켓] 자연산 대광어회 200g (11,810원/무료)",
+      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748203",
+      "source": "뽐뿌",
+      "category": "상품권/기타",
+      "price_str": "11,810원",
+      "price_num": 11810,
+      "free_ship": true,
+      "timestamp": 1794448745
+    },
+    {
+      "title": "선착순특가) 교동 육개장, 500g, 10개",
+      "url": "https://etoland.co.kr/b/hotdeal/view/%EC%84%A0%EC%B0%A9%EC%88%9C%ED%8A%B9%EA%B0%80-%EA%B5%90%EB%8F%99-%EC%9C%A1%EA%B0%9C%EC%9E%A5-500g-10%EA%B0%9C-9573584 \"선착순특가",
+      "source": "이토랜드",
+      "category": "상품권/기타",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": false,
+      "timestamp": 1794448689
+    },
+    {
+      "title": "26~4XL macci(마찌) 히트포뮬러 ROKA 자수 코리아 아미 보아털 기모 로카 후리스 집업 (정품)",
+      "url": "https://etoland.co.kr/b/hotdeal/view/4xl-macci%EB%A7%88%EC%B0%8C-%ED%9E%88%ED%8A%B8%ED%8F%AC%EB%AE%AC%EB%9F%AC-roka-%EC%9E%90%EC%88%98-%EC%BD%94%EB%A6%AC%EC%95%84-%EC%95%84%EB%AF%B8-%EB%B3%B4%EC%95%84%ED%84%B8-%EA%B8%B0%EB%AA%A8-%EB%A1%9C%EC%B9%B4-%ED%9B%84%EB%A6%AC%EC%8A%A4-%EC%A7%91%EC%97%85-%EC%A0%95%ED%92%88-9572449 \"~4XL macci(마찌",
+      "source": "이토랜드",
+      "category": "상품권/기타",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": false,
+      "timestamp": 1794448609
+    },
+    {
+      "title": "국내산 우리쌀 떡국떡 3kg 일반미/오색/현미발아/새싹 3봉 골라담기",
+      "url": "https://etoland.co.kr/b/hotdeal/view/%EA%B5%AD%EB%82%B4%EC%82%B0-%EC%9A%B0%EB%A6%AC%EC%8C%80-%EB%96%A1%EA%B5%AD%EB%96%A1-3kg-%EC%9D%BC%EB%B0%98%EB%AF%B8%EC%98%A4%EC%83%89%ED%98%84%EB%AF%B8%EB%B0%9C%EC%95%84%EC%83%88%EC%8B%B9-3%EB%B4%89-%EA%B3%A8%EB%9D%BC%EB%8B%B4%EA%B8%B0-9572693 \"국내산 우리쌀 떡국떡 3kg 일반미/오색/현미발아/새싹 3봉 골라담기\"",
+      "source": "이토랜드",
+      "category": "식품/생필품",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": false,
+      "timestamp": 1794448529
+    },
+    {
+      "title": "프링글스 9개 1.3만원, 콘푸로스트 3팩 1.1만원 ...",
+      "url": "https://eomisae.co.kr/fs/210496215",
+      "source": "어미새",
+      "category": "패션/의류",
+      "price_str": "13,000원",
+      "price_num": 13000,
+      "free_ship": false,
+      "timestamp": 1794448139
+    },
+    {
+      "title": "LOMA 로마 에센셜 컨디셔너 1L ₩3,990~",
+      "url": "https://eomisae.co.kr/fs/210495585",
+      "source": "어미새",
+      "category": "패션/의류",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": false,
+      "timestamp": 1794447919
+    },
+    {
+      "title": "[닌텐도스토어]시간의 오카리나 젤다의 전설 악기(추첨 판매 응모)",
+      "url": "https://bbs.ruliweb.com/market/board/1020/read/108965",
+      "source": "루리웹",
+      "category": "전자/PC",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": false,
+      "timestamp": 1794443439
+    },
+    {
+      "title": "[하이마트 온라인] PS4 앤섬 / 990원",
+      "url": "https://bbs.ruliweb.com/market/board/1020/read/108964",
+      "source": "루리웹",
+      "category": "전자/PC",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": false,
+      "timestamp": 1794442787
+    },
+    {
+      "title": "[네이버] 플레이스테이션 스토어 기프트카드 10만원권 8%할인 92000원",
+      "url": "https://bbs.ruliweb.com/market/board/1020/read/108963",
+      "source": "루리웹",
+      "category": "상품권/기타",
+      "price_str": "92,000원",
+      "price_num": 92000,
+      "free_ship": false,
+      "timestamp": 1794442726
+    },
+    {
+      "title": "[롯데온] 펩시콜라 제로슈거라임,제로카페인 210ml60캔(22,870원/무료)",
+      "url": "https://bbs.ruliweb.com/market/board/1020/read/108962",
+      "source": "루리웹",
+      "category": "식품/생필품",
+      "price_str": "22,870원",
+      "price_num": 22870,
+      "free_ship": true,
+      "timestamp": 1794442275
+    },
+    {
+      "title": "[스팀] 风帆纪元 Sailing Era 할인 (12,150원)",
+      "url": "https://bbs.ruliweb.com/market/board/1020/read/108961",
+      "source": "루리웹",
+      "category": "전자/PC",
+      "price_str": "12,150원",
+      "price_num": 12150,
+      "free_ship": false,
+      "timestamp": 1794437222
+    },
+    {
+      "title": "[네이버페이] 라방 랜덤 5원",
+      "url": "https://bbs.ruliweb.com/market/board/1020/read/108960",
+      "source": "루리웹",
+      "category": "상품권/기타",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": false,
+      "timestamp": 1794436806
+    },
+    {
+      "title": "[지마켓]Leadjoy Xeno pro충전독포함 세트(39400~36650/무료)",
+      "url": "https://bbs.ruliweb.com/market/board/1020/read/108959",
+      "source": "루리웹",
+      "category": "상품권/기타",
+      "price_str": "",
+      "price_num": null,
+      "free_ship": true,
+      "timestamp": 1794435413
+    },
+    {
+      "title": "[지마켓] 삼양 사또밥 67g 20개 (15,230원/무료)",
+      "url": "https://bbs.ruliweb.com/market/board/1020/read/108958",
+      "source": "루리웹",
+      "category": "상품권/기타",
+      "price_str": "15,230원",
+      "price_num": 15230,
+      "free_ship": true,
+      "timestamp": 1794434665
+    },
     {
       "title": "[스팀] Crown Wars: The Black Prince 95% 할인 1,050원",
       "url": "https://www.clien.net/service/board/jirum/19290948",
@@ -94,16 +624,6 @@
       "timestamp": 1794431059
     },
     {
-      "title": "농협한돈 한돈 돼지고기 1kg 구이용 수육용",
-      "url": "https://etoland.co.kr/b/hotdeal/view/%EB%86%8D%ED%98%91%ED%95%9C%EB%8F%88-%ED%95%9C%EB%8F%88-%EB%8F%BC%EC%A7%80%EA%B3%A0%EA%B8%B0-1kg-%EA%B5%AC%EC%9D%B4%EC%9A%A9-%EC%88%98%EC%9C%A1%EC%9A%A9-9571831 \"농협한돈 한돈 돼지고기 1kg 구이용 수육용\"",
-      "source": "이토랜드",
-      "category": "식품/생필품",
-      "price_str": "",
-      "price_num": null,
-      "free_ship": false,
-      "timestamp": 1794430979
-    },
-    {
       "title": "제주 조생감귤 2.5kg 대과",
       "url": "https://etoland.co.kr/b/hotdeal/view/%EC%A0%9C%EC%A3%BC-%EC%A1%B0%EC%83%9D%EA%B0%90%EA%B7%A4-2-5kg-%EB%8C%80%EA%B3%BC-9572664 \"제주 조생감귤 2.5kg 대과\"",
       "source": "이토랜드",
@@ -124,26 +644,6 @@
       "timestamp": 1794430819
     },
     {
-      "title": "연육 85% 밀가루 없는 모듬 국대 어묵탕 230g X 5팩",
-      "url": "https://etoland.co.kr/b/hotdeal/view/%EC%97%B0%EC%9C%A1-85-%EB%B0%80%EA%B0%80%EB%A3%A8-%EC%97%86%EB%8A%94-%EB%AA%A8%EB%93%AC-%EA%B5%AD%EB%8C%80-%EC%96%B4%EB%AC%B5%ED%83%95-230g-x-5%ED%8C%A9-9571771 \"연육 85% 밀가루 없는 모듬 국대 어묵탕 230g X 5팩\"",
-      "source": "이토랜드",
-      "category": "상품권/기타",
-      "price_str": "",
-      "price_num": null,
-      "free_ship": false,
-      "timestamp": 1794430739
-    },
-    {
-      "title": "국내산 가정용 햇 단감 5kg+5kg",
-      "url": "https://etoland.co.kr/b/hotdeal/view/%EA%B5%AD%EB%82%B4%EC%82%B0-%EA%B0%80%EC%A0%95%EC%9A%A9-%ED%96%87-%EB%8B%A8%EA%B0%90-5kg435kg-9571783 \"국내산 가정용 햇 단감 5kg+5kg\"",
-      "source": "이토랜드",
-      "category": "상품권/기타",
-      "price_str": "",
-      "price_num": null,
-      "free_ship": false,
-      "timestamp": 1794430659
-    },
-    {
       "title": "미니 크로스백 휴대폰가방 보조 멀티팩 파우치 여행 남녀공용",
       "url": "https://etoland.co.kr/b/hotdeal/view/%EB%AF%B8%EB%8B%88-%ED%81%AC%EB%A1%9C%EC%8A%A4%EB%B0%B1-%ED%9C%B4%EB%8C%80%ED%8F%B0%EA%B0%80%EB%B0%A9-%EB%B3%B4%EC%A1%B0-%EB%A9%80%ED%8B%B0%ED%8C%A9-%ED%8C%8C%EC%9A%B0%EC%B9%98-%EC%97%AC%ED%96%89-%EB%82%A8%EB%85%80%EA%B3%B5%EC%9A%A9-9572298 \"미니 크로스백 휴대폰가방 보조 멀티팩 파우치 여행 남녀공용\"",
       "source": "이토랜드",
@@ -154,17 +654,7 @@
       "timestamp": 1794430579
     },
     {
-      "title": "국내산 방어회 필렛 (원물 8kg이상) 손질 후 500g (등살,뱃살,꼬리살)",
-      "url": "https://etoland.co.kr/b/hotdeal/view/%EA%B5%AD%EB%82%B4%EC%82%B0-%EB%B0%A9%EC%96%B4%ED%9A%8C-%ED%95%84%EB%A0%9B-%EC%9B%90%EB%AC%BC-8kg%EC%9D%B4%EC%83%81-%EC%86%90%EC%A7%88-%ED%9B%84-500g-%EB%93%B1%EC%82%B4%EB%B1%83%EC%82%B4%EA%BC%AC%EB%A6%AC%EC%82%B4-9571733 \"국내산 방어회 필렛 (원물 8kg이상",
-      "source": "이토랜드",
-      "category": "상품권/기타",
-      "price_str": "",
-      "price_num": null,
-      "free_ship": false,
-      "timestamp": 1794430499
-    },
-    {
-      "title": "21(멕시카나치킨) 1989오리진후라이드+콜라1.25L",
+      "title": "11(멕시카나치킨) 1989오리진후라이드+콜라1.25L",
       "url": "https://etoland.co.kr/b/hotdeal/view/%EB%A9%95%EC%8B%9C%EC%B9%B4%EB%82%98%EC%B9%98%ED%82%A8-1989%EC%98%A4%EB%A6%AC%EC%A7%84%ED%9B%84%EB%9D%BC%EC%9D%B4%EB%93%9C43%EC%BD%9C%EB%9D%BC1-25l-9572526 \"(멕시카나치킨",
       "source": "이토랜드",
       "category": "식품/생필품",
@@ -184,7 +674,7 @@
       "timestamp": 1794430339
     },
     {
-      "title": "23(신세계마산점)New Performance 테크노카오스 2000 HQ7282HQ7289JR7229",
+      "title": "15(신세계마산점)New Performance 테크노카오스 2000 HQ7282HQ7289JR7229",
       "url": "https://etoland.co.kr/b/hotdeal/view/%EC%8B%A0%EC%84%B8%EA%B3%84%EB%A7%88%EC%82%B0%EC%A0%90new-performance-%ED%85%8C%ED%81%AC%EB%85%B8%EC%B9%B4%EC%98%A4%EC%8A%A4-2000-hq7282hq7289jr7229-9572463 \"(신세계마산점",
       "source": "이토랜드",
       "category": "상품권/기타",
@@ -194,7 +684,7 @@
       "timestamp": 1794430259
     },
     {
-      "title": "24(멕시카나치킨) 양념치킨+콜라1.25L",
+      "title": "17(멕시카나치킨) 양념치킨+콜라1.25L",
       "url": "https://etoland.co.kr/b/hotdeal/view/%EB%A9%95%EC%8B%9C%EC%B9%B4%EB%82%98%EC%B9%98%ED%82%A8-%EC%96%91%EB%85%90%EC%B9%98%ED%82%A843%EC%BD%9C%EB%9D%BC1-25l-9572532 \"(멕시카나치킨",
       "source": "이토랜드",
       "category": "식품/생필품",
@@ -202,46 +692,6 @@
       "price_num": null,
       "free_ship": false,
       "timestamp": 1794430179
-    },
-    {
-      "title": "골드윈 메리노울 바라클라바 17430원 유배",
-      "url": "https://eomisae.co.kr/fs/210276126",
-      "source": "어미새",
-      "category": "패션/의류",
-      "price_str": "17,430원",
-      "price_num": 17430,
-      "free_ship": false,
-      "timestamp": 1794430099
-    },
-    {
-      "title": "고메 소바바 소이허니 순살 240g 4개",
-      "url": "https://etoland.co.kr/b/hotdeal/view/%EA%B3%A0%EB%A9%94-%EC%86%8C%EB%B0%94%EB%B0%94-%EC%86%8C%EC%9D%B4%ED%97%88%EB%8B%88-%EC%88%9C%EC%82%B4-240g-4%EA%B0%9C-9571782 \"고메 소바바 소이허니 순살 240g 4개\"",
-      "source": "이토랜드",
-      "category": "상품권/기타",
-      "price_str": "",
-      "price_num": null,
-      "free_ship": false,
-      "timestamp": 1794430099
-    },
-    {
-      "title": "동원 DHA 참치 150g 원터치 12캔",
-      "url": "https://etoland.co.kr/b/hotdeal/view/%EB%8F%99%EC%9B%90-dha-%EC%B0%B8%EC%B9%98-150g-%EC%9B%90%ED%84%B0%EC%B9%98-12%EC%BA%94-9571781 \"동원 DHA 참치 150g 원터치 12캔\"",
-      "source": "이토랜드",
-      "category": "식품/생필품",
-      "price_str": "",
-      "price_num": null,
-      "free_ship": false,
-      "timestamp": 1794430019
-    },
-    {
-      "title": "일품미식 한입 쏙 통통한 깐새우장 800g",
-      "url": "https://etoland.co.kr/b/hotdeal/view/%EC%9D%BC%ED%92%88%EB%AF%B8%EC%8B%9D-%ED%95%9C%EC%9E%85-%EC%8F%99-%ED%86%B5%ED%86%B5%ED%95%9C-%EA%B9%90%EC%83%88%EC%9A%B0%EC%9E%A5-800g-9571775 \"일품미식 한입 쏙 통통한 깐새우장 800g\"",
-      "source": "이토랜드",
-      "category": "상품권/기타",
-      "price_str": "",
-      "price_num": null,
-      "free_ship": false,
-      "timestamp": 1794429939
     },
     {
       "title": "브론슨 50s USAF TYPE MA-1 항공점퍼 오리지널 버전",
@@ -274,56 +724,6 @@
       "timestamp": 1794428889
     },
     {
-      "title": "[롯데온] 광천김 백제 두번 구운 김밥김 22g 10봉(13,500 / 무료배송)",
-      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748142",
-      "source": "뽐뿌",
-      "category": "상품권/기타",
-      "price_str": "",
-      "price_num": null,
-      "free_ship": true,
-      "timestamp": 1794422888
-    },
-    {
-      "title": "[네이버] 완숙토마토2kg(8,900/무배)",
-      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748141",
-      "source": "뽐뿌",
-      "category": "상품권/기타",
-      "price_str": "",
-      "price_num": null,
-      "free_ship": true,
-      "timestamp": 1794414601
-    },
-    {
-      "title": "[지마켓] 강화도 순무김치 1.5kg (13,500원/무료)",
-      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748140",
-      "source": "뽐뿌",
-      "category": "식품/생필품",
-      "price_str": "13,500원",
-      "price_num": 13500,
-      "free_ship": true,
-      "timestamp": 1794412561
-    },
-    {
-      "title": "[지마켓] 구글플레이 기프트코드 8% 할인 (다양/무료)",
-      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748139",
-      "source": "뽐뿌",
-      "category": "상품권/기타",
-      "price_str": "",
-      "price_num": null,
-      "free_ship": true,
-      "timestamp": 1794411285
-    },
-    {
-      "title": "[네이버] 켈로그 프로틴 그래놀라 제로슈거 350g 1팩+1팩 (9,920원/무료)",
-      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748138",
-      "source": "뽐뿌",
-      "category": "식품/생필품",
-      "price_str": "9,920원",
-      "price_num": 9920,
-      "free_ship": true,
-      "timestamp": 1794411005
-    },
-    {
       "title": "[지마켓] 구글플레이 기프트코드 5만 (46,000원/무료.",
       "url": "https://bbs.ruliweb.com/market/board/1020/read/108957",
       "source": "루리웹",
@@ -334,54 +734,14 @@
       "timestamp": 1794410980
     },
     {
-      "title": "[톡딜] 고기만두 630g 1봉+김치만두 630g 1봉 총 2봉 6,800원/무배",
-      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748137",
-      "source": "뽐뿌",
-      "category": "식품/생필품",
-      "price_str": "6,800원",
-      "price_num": 6800,
-      "free_ship": true,
-      "timestamp": 1794410628
-    },
-    {
-      "title": "[롯데온] 아망떼 70평량 물티슈 70매 20팩 (14,606원/무료)",
-      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748136",
-      "source": "뽐뿌",
+      "title": "[롯데온] 아망떼 프리미엄 고평량 물티슈 70매 20팩 (14,606원/무배)",
+      "url": "https://bbs.ruliweb.com/market/board/1020/read/108956",
+      "source": "루리웹",
       "category": "식품/생필품",
       "price_str": "14,606원",
       "price_num": 14606,
       "free_ship": true,
-      "timestamp": 1794410427
-    },
-    {
-      "title": "[지마켓] 래핑카우 벨큐브 치즈 24입 4팩+세모포션 플레인 1팩 (23,910원/무료)",
-      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748135",
-      "source": "뽐뿌",
-      "category": "상품권/기타",
-      "price_str": "23,910원",
-      "price_num": 23910,
-      "free_ship": true,
-      "timestamp": 1794410402
-    },
-    {
-      "title": "[롯데온] 아망떼 프리미엄 고평량 물티슈 70매 20팩 (14,980원/무배)",
-      "url": "https://bbs.ruliweb.com/market/board/1020/read/108956",
-      "source": "루리웹",
-      "category": "식품/생필품",
-      "price_str": "14,980원",
-      "price_num": 14980,
-      "free_ship": true,
       "timestamp": 1794410380
-    },
-    {
-      "title": "[옥션] 슈퍼 비타민C 3000 100포 x 3박스 (23,900원/무료)",
-      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748134",
-      "source": "뽐뿌",
-      "category": "식품/생필품",
-      "price_str": "23,900원",
-      "price_num": 23900,
-      "free_ship": true,
-      "timestamp": 1794410218
     },
     {
       "title": "[지마켓]도루코 페이스6 면도날 총13입+폼74ml (19,860원/무료)",
@@ -394,46 +754,6 @@
       "timestamp": 1794410135
     },
     {
-      "title": "[카카오] 스페인산 냉동 통삼겹살 수육용 1kg (8,900원/5만이상무배)",
-      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748133",
-      "source": "뽐뿌",
-      "category": "식품/생필품",
-      "price_str": "8,900원",
-      "price_num": 8900,
-      "free_ship": true,
-      "timestamp": 1794410114
-    },
-    {
-      "title": "[토스] 호리온 식물성 멜라토닌 30정 4박스 (25,860원/무배)",
-      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748132",
-      "source": "뽐뿌",
-      "category": "상품권/기타",
-      "price_str": "25,860원",
-      "price_num": 25860,
-      "free_ship": true,
-      "timestamp": 1794410111
-    },
-    {
-      "title": "[지마켓] 레노버 Legion Y700 인피니트 무극 8.4인치 12+256G 스냅드래곤 8 Elite Gen 5 게이밍 태블릿 관부가세 포함 (856,250원/무료)",
-      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748131",
-      "source": "뽐뿌",
-      "category": "전자/PC",
-      "price_str": "856,250원",
-      "price_num": 856250,
-      "free_ship": true,
-      "timestamp": 1794409999
-    },
-    {
-      "title": "[네이버] 리얼 프로폴리스 토너 150ml (4,990원/무배)",
-      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748130",
-      "source": "뽐뿌",
-      "category": "상품권/기타",
-      "price_str": "4,990원",
-      "price_num": 4990,
-      "free_ship": true,
-      "timestamp": 1794409987
-    },
-    {
       "title": "[네이버페이] 일일적립, 클릭 20원, 라이브예고 12원",
       "url": "https://bbs.ruliweb.com/market/board/1020/read/108954",
       "source": "루리웹",
@@ -442,26 +762,6 @@
       "price_num": null,
       "free_ship": false,
       "timestamp": 1794409966
-    },
-    {
-      "title": "[카카오] 씨 없는 청도 반건시 6개입 (8,750원 / 무배)",
-      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748129",
-      "source": "뽐뿌",
-      "category": "상품권/기타",
-      "price_str": "8,750원",
-      "price_num": 8750,
-      "free_ship": true,
-      "timestamp": 1794409951
-    },
-    {
-      "title": "[지마켓] 연육함량 80% 부산 다대포 봉어묵 2kg (11,900원/무료)",
-      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748128",
-      "source": "뽐뿌",
-      "category": "상품권/기타",
-      "price_str": "11,900원",
-      "price_num": 11900,
-      "free_ship": true,
-      "timestamp": 1794409916
     },
     {
       "title": "[지마켓] 구글플레이 기프트코드 1~5만원권 8% 할인 (11/12)",
@@ -534,16 +834,6 @@
       "timestamp": 1794404828
     },
     {
-      "title": "Sadball (무료 게임)",
-      "url": "https://etoland.co.kr/b/hotdeal/view/sadball-%EB%AC%B4%EB%A3%8C-%EA%B2%8C%EC%9E%84-9571727 \"Sadball (무료 게임",
-      "source": "이토랜드",
-      "category": "상품권/기타",
-      "price_str": "",
-      "price_num": null,
-      "free_ship": true,
-      "timestamp": 1794404783
-    },
-    {
       "title": "[롯데온] 라인바싸 스위트 500ml 2박스 총 40입 (10,890원/무료)",
       "url": "https://bbs.ruliweb.com/market/board/1020/read/108952",
       "source": "루리웹",
@@ -564,36 +854,6 @@
       "timestamp": 1794404678
     },
     {
-      "title": "[카카오] 유닉스 스트레이트 고데기 / 접이식 드라이어 기획전 (13,900원~/무료)",
-      "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572663&page=1",
-      "source": "딜바다",
-      "category": "상품권/기타",
-      "price_str": "13,900원",
-      "price_num": 13900,
-      "free_ship": true,
-      "timestamp": 1794404528
-    },
-    {
-      "title": "뉴발란스 스니커즈와 런닝화 MR530KA 외",
-      "url": "https://etoland.co.kr/b/hotdeal/view/%EB%89%B4%EB%B0%9C%EB%9E%80%EC%8A%A4-%EB%9F%B0%EB%8B%9D%ED%99%94-mr530ka-%EC%99%B8-9571728 \"뉴발란스 스니커즈와 런닝화 MR530KA 외\"",
-      "source": "이토랜드",
-      "category": "패션/의류",
-      "price_str": "",
-      "price_num": null,
-      "free_ship": false,
-      "timestamp": 1794404463
-    },
-    {
-      "title": "[지마켓]크라운제과 버라이어티팩 1252G 13,140원",
-      "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572662&page=1",
-      "source": "딜바다",
-      "category": "상품권/기타",
-      "price_str": "13,140원",
-      "price_num": 13140,
-      "free_ship": false,
-      "timestamp": 1794404378
-    },
-    {
       "title": "와플땅콩빵 100개입+100개입 총 200개입",
       "url": "https://etoland.co.kr/b/hotdeal/view/%EC%99%80%ED%94%8C%EB%95%85%EC%BD%A9%EB%B9%B5-100%EA%B0%9C%EC%9E%8543100%EA%B0%9C%EC%9E%85-%EC%B4%9D-200%EA%B0%9C%EC%9E%85-9572389 \"와플땅콩빵 100개입+100개입 총 200개입\"",
       "source": "이토랜드",
@@ -604,86 +864,6 @@
       "timestamp": 1794404303
     },
     {
-      "title": "[카카오] 로로보아 무선 전동 채칼 이지 핸디 슬라이서 + 스탠딩 분리형 (39,900원/무료)",
-      "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572661&page=1",
-      "source": "딜바다",
-      "category": "상품권/기타",
-      "price_str": "39,900원",
-      "price_num": 39900,
-      "free_ship": true,
-      "timestamp": 1794404228
-    },
-    {
-      "title": "전라도할매 국내산 프리미엄 겉절이5kg",
-      "url": "https://etoland.co.kr/b/hotdeal/view/%EC%A0%84%EB%9D%BC%EB%8F%84%ED%95%A0%EB%A7%A4-%EA%B5%AD%EB%82%B4%EC%82%B0-%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84-%EA%B2%89%EC%A0%88%EC%9D%B45kg-9571789 \"전라도할매 국내산 프리미엄 겉절이5kg\"",
-      "source": "이토랜드",
-      "category": "상품권/기타",
-      "price_str": "",
-      "price_num": null,
-      "free_ship": false,
-      "timestamp": 1794404143
-    },
-    {
-      "title": "[아시아모바일] LG알뜰폰 데이터무제한(5GB+1Mbps) 110원 / CU모바일상품권 1만원",
-      "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572660&page=1",
-      "source": "딜바다",
-      "category": "전자/PC",
-      "price_str": "10,000원",
-      "price_num": 10000,
-      "free_ship": false,
-      "timestamp": 1794404078
-    },
-    {
-      "title": "카카오페이 10시 퀴즈",
-      "url": "https://etoland.co.kr/b/hotdeal/view/%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%8E%98%EC%9D%B4-10%EC%8B%9C-%ED%80%B4%EC%A6%88-9572013 \"카카오페이 10시 퀴즈\"",
-      "source": "이토랜드",
-      "category": "상품권/기타",
-      "price_str": "",
-      "price_num": null,
-      "free_ship": false,
-      "timestamp": 1794404063
-    },
-    {
-      "title": "지리산 물하나 무라벨 1L X 24병",
-      "url": "https://etoland.co.kr/b/hotdeal/view/%EC%A7%80%EB%A6%AC%EC%82%B0-%EB%AC%BC%ED%95%98%EB%82%98-%EB%AC%B4%EB%9D%BC%EB%B2%A8-1l-x-24%EB%B3%91-9572042 \"지리산 물하나 무라벨 1L X 24병\"",
-      "source": "이토랜드",
-      "category": "상품권/기타",
-      "price_str": "",
-      "price_num": null,
-      "free_ship": false,
-      "timestamp": 1794403983
-    },
-    {
-      "title": "탑젤리 믹스맛 320g3개 / 8500원 무료배송",
-      "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572659&page=1",
-      "source": "딜바다",
-      "category": "상품권/기타",
-      "price_str": "8,500원",
-      "price_num": 8500,
-      "free_ship": true,
-      "timestamp": 1794403928
-    },
-    {
-      "title": "슈펜 천연가죽 스웨이드 왈라비",
-      "url": "https://etoland.co.kr/b/hotdeal/view/%EC%8A%88%ED%8E%9C-%EC%B2%9C%EC%97%B0%EA%B0%80%EC%A3%BD-%EC%8A%A4%EC%9B%A8%EC%9D%B4%EB%93%9C-%EC%99%88%EB%9D%BC%EB%B9%84-9572094 \"슈펜 천연가죽 스웨이드 왈라비\"",
-      "source": "이토랜드",
-      "category": "상품권/기타",
-      "price_str": "",
-      "price_num": null,
-      "free_ship": false,
-      "timestamp": 1794403903
-    },
-    {
-      "title": "[29CM] 킨치 보트슈즈 (125,400원/무료)",
-      "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572658&page=1",
-      "source": "딜바다",
-      "category": "상품권/기타",
-      "price_str": "125,400원",
-      "price_num": 125400,
-      "free_ship": true,
-      "timestamp": 1794403778
-    },
-    {
       "title": "닭다리살꼬치10개+파닭꼬치 10개",
       "url": "https://etoland.co.kr/b/hotdeal/view/%EB%8B%AD%EB%8B%A4%EB%A6%AC%EC%82%B4%EA%BC%AC%EC%B9%9810%EA%B0%9C43%ED%8C%8C%EB%8B%AD%EA%BC%AC%EC%B9%98-10%EA%B0%9C-9572438 \"닭다리살꼬치10개+파닭꼬치 10개\"",
       "source": "이토랜드",
@@ -692,46 +872,6 @@
       "price_num": null,
       "free_ship": false,
       "timestamp": 1794403743
-    },
-    {
-      "title": "[지마켓] 냉장 국내산 삼겹살 목살 1kg (19,610원/무료)",
-      "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572657&page=1",
-      "source": "딜바다",
-      "category": "식품/생필품",
-      "price_str": "19,610원",
-      "price_num": 19610,
-      "free_ship": true,
-      "timestamp": 1794403628
-    },
-    {
-      "title": "차량용 맥세이프 냉각 충전기 Qi2.2 25W 루시드아크",
-      "url": "https://etoland.co.kr/b/hotdeal/view/%EC%B0%A8%EB%9F%89%EC%9A%A9-%EB%A7%A5%EC%84%B8%EC%9D%B4%ED%94%84-%EB%83%89%EA%B0%81-%EC%B6%A9%EC%A0%84%EA%B8%B0-qi2-2-25w-%EB%A3%A8%EC%8B%9C%EB%93%9C%EC%95%84%ED%81%AC-9572044 \"차량용 맥세이프 냉각 충전기 Qi2.2 25W 루시드아크\"",
-      "source": "이토랜드",
-      "category": "전자/PC",
-      "price_str": "",
-      "price_num": null,
-      "free_ship": false,
-      "timestamp": 1794403583
-    },
-    {
-      "title": "[공홈] 헬베스코 패밀리세일 (6,900원~/무배)",
-      "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572656&page=1",
-      "source": "딜바다",
-      "category": "상품권/기타",
-      "price_str": "6,900원",
-      "price_num": 6900,
-      "free_ship": true,
-      "timestamp": 1794403478
-    },
-    {
-      "title": "[네이버] 북성로 국내산 한돈 연탄불고기 300g×4팩 (12,900원/네멤무배)",
-      "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572655&page=1",
-      "source": "딜바다",
-      "category": "식품/생필품",
-      "price_str": "12,900원",
-      "price_num": 12900,
-      "free_ship": true,
-      "timestamp": 1794403328
     },
     {
       "title": "유니페어 브랜드 그린도어 로퍼 6만원대",
@@ -802,26 +942,6 @@
       "price_num": null,
       "free_ship": false,
       "timestamp": 1794401873
-    },
-    {
-      "title": "Apple 아이폰 Air 1,074,000원",
-      "url": "https://eomisae.co.kr/fs/210126593",
-      "source": "어미새",
-      "category": "패션/의류",
-      "price_str": "1,074,000원",
-      "price_num": 1074000,
-      "free_ship": false,
-      "timestamp": 1794401653
-    },
-    {
-      "title": "토앤토 제로비티 0.8/하바이나스X메종키츠네 쪼리...",
-      "url": "https://eomisae.co.kr/fs/210434917",
-      "source": "어미새",
-      "category": "패션/의류",
-      "price_str": "",
-      "price_num": null,
-      "free_ship": false,
-      "timestamp": 1794401433
     },
     {
       "title": "[네이버페이] 20원",
@@ -912,96 +1032,6 @@
       "price_num": 47820,
       "free_ship": true,
       "timestamp": 1794375705
-    },
-    {
-      "title": "[알리] 차이파이 이어폰 & DAC & 케이블 (20.57~990.87달러)",
-      "url": "https://bbs.ruliweb.com/market/board/1020/read/108941",
-      "source": "루리웹",
-      "category": "전자/PC",
-      "price_str": "",
-      "price_num": null,
-      "free_ship": false,
-      "timestamp": 1794369051
-    },
-    {
-      "title": "[11번가] 하겐다즈 파인트 아이스크림 3통 (티멤버십 20,920원/무료)",
-      "url": "https://bbs.ruliweb.com/market/board/1020/read/108940",
-      "source": "루리웹",
-      "category": "상품권/기타",
-      "price_str": "20,920원",
-      "price_num": 20920,
-      "free_ship": true,
-      "timestamp": 1794368714
-    },
-    {
-      "title": "[보드엠]아리디아 보드게임 선주문",
-      "url": "https://bbs.ruliweb.com/market/board/1020/read/108939",
-      "source": "루리웹",
-      "category": "상품권/기타",
-      "price_str": "",
-      "price_num": null,
-      "free_ship": false,
-      "timestamp": 1794366579
-    },
-    {
-      "title": "[겜우리] PS5 드래곤 퀘스트 몬스터즈 4 한정판 예약 판매 / 257,800원",
-      "url": "https://bbs.ruliweb.com/market/board/1020/read/108938",
-      "source": "루리웹",
-      "category": "전자/PC",
-      "price_str": "257,800원",
-      "price_num": 257800,
-      "free_ship": false,
-      "timestamp": 1794366001
-    },
-    {
-      "title": "[11번가] 오뚜기 UNO 사각피자 12개 (T멤20,530원 / 무배)",
-      "url": "https://bbs.ruliweb.com/market/board/1020/read/108937",
-      "source": "루리웹",
-      "category": "식품/생필품",
-      "price_str": "20,530원",
-      "price_num": 20530,
-      "free_ship": true,
-      "timestamp": 1794364019
-    },
-    {
-      "title": "[갤럭시스토어] BTS WORLD Tour ARIRANG 월페이퍼 (무료)",
-      "url": "https://bbs.ruliweb.com/market/board/1020/read/108936",
-      "source": "루리웹",
-      "category": "전자/PC",
-      "price_str": "",
-      "price_num": null,
-      "free_ship": true,
-      "timestamp": 1794363907
-    },
-    {
-      "title": "[쿠팡] 농심 매운새우깡 90g 4개 (3,080원/와우무료)",
-      "url": "https://bbs.ruliweb.com/market/board/1020/read/108935",
-      "source": "루리웹",
-      "category": "상품권/기타",
-      "price_str": "3,080원",
-      "price_num": 3080,
-      "free_ship": true,
-      "timestamp": 1794362977
-    },
-    {
-      "title": "[종근당건강몰] 락토핏 코어 360포+30포 (44,190원 / 무배)",
-      "url": "https://bbs.ruliweb.com/market/board/1020/read/108934",
-      "source": "루리웹",
-      "category": "상품권/기타",
-      "price_str": "44,190원",
-      "price_num": 44190,
-      "free_ship": true,
-      "timestamp": 1794361819
-    },
-    {
-      "title": "[스팀] STEINS;GATE 외 블랙프라이데이 세일",
-      "url": "https://bbs.ruliweb.com/market/board/1020/read/108933",
-      "source": "루리웹",
-      "category": "전자/PC",
-      "price_str": "",
-      "price_num": null,
-      "free_ship": false,
-      "timestamp": 1794361177
     },
     {
       "title": "[알리익스프레스] 11.11 광군제 TOP 100 상품 공개 안내",
